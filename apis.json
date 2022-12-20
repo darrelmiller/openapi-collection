@@ -489,6 +489,120 @@
           "url": "https://api.srprs.me/swagger.json"
         }
       ]
+    },
+    {
+      "name": "Myworkout API",
+      "description": "Documentation for Myworkout API 2.\n\nBasic concepts are explained in this section.\n\n# Localization\nThe API supports localization for error messages like validation errors.\nThe preferred way to request language is to set proper \u0060Accept-Language\u0060 header, but this can be overriden by adding a \u0060lang\u0060 query parameter to the request.\n\n- _Example 1_: \u0060Accept-Language: no\u0060 - _Example 2_: \u0060en-GB,en-US;q=0.9,en;q=0.8\u0060\n",
+      "baseUrl": "https://api.myworkout.com/",
+      "properties": [
+        {
+          "type": "X-openapi",
+          "url": "https://api.myworkout.com/doc/api/swagger.json"
+        }
+      ]
+    },
+    {
+      "name": "TzKT API",
+      "description": "# Introduction\n\nTzKT Explorer provides free REST API and WebSocket API for accessing detailed Tezos blockchain data and helps developers build more services and applications on top of Tezos.\nTzKT is an open-source project, so you can easily clone and build it and use it as a self-hosted service to avoid any risks of depending on third-party services.\n\nTzKT API is available for the following Tezos networks with the following base URLs:\n\n- Mainnet: \u0060https://api.tzkt.io/\u0060 or \u0060https://api.mainnet.tzkt.io/\u0060 ([view docs](https://api.tzkt.io)) \n- Ghostnet: \u0060https://api.ghostnet.tzkt.io/\u0060 ([view docs](https://api.ghostnet.tzkt.io))\n- Kathmandunet: \u0060https://api.kathmandunet.tzkt.io/\u0060 ([view docs](https://api.kathmandunet.tzkt.io))\n- Limanet: \u0060https://api.limanet.tzkt.io/\u0060 ([view docs](https://api.limanet.tzkt.io))\n\nWe also provide a staging environment for testing newest features and pre-updating client applications before deploying to production:\n\n- Mainnet staging: \u0060https://staging.api.tzkt.io/\u0060 or \u0060https://staging.api.mainnet.tzkt.io/\u0060 ([view docs](https://staging.api.tzkt.io))\n\nFeel free to contact us if you have any questions or feature requests.\nYour feedback really helps us make TzKT better!\n\n- Discord: https://discord.gg/aG8XKuwsQd\n- Telegram: https://t.me/baking_bad_chat\n- Slack: https://tezos-dev.slack.com/archives/CV5NX7F2L\n- Twitter: https://twitter.com/TezosBakingBad\n- Email: hello@baking-bad.org\n\nAnd don\u0027t forget to star TzKT project [on GitHub](https://github.com/baking-bad/tzkt) ;)\n\n# Terms of Use\n\nTzKT API is free for everyone and for both commercial and non-commercial usage.\n\nIf your application or service uses the TzKT API in any forms: directly on frontend or indirectly on backend,\nyou must mention that fact on your website or application by placing the label\n**\u0022Powered by TzKT API\u0022** or **\u0022Built with TzKT API\u0022** with a direct link to [tzkt.io](https://tzkt.io).\n\n\n# Rate Limits\n\nThere will be no rate limits as long as our servers can handle the load without additional infrastructure costs.\nHowever, any apparent abuse will be prevented by setting targeted rate limits.\n\nCheck out [Tezos Explorer API Best Practices](https://baking-bad.org/blog/tag/TzKT/)\nand in particular [how to optimize requests count](https://baking-bad.org/blog/2020/07/29/tezos-explorer-api-tzkt-how-often-to-make-requests/).\n\n---\n",
+      "baseUrl": "https://staging.api.tzkt.io/",
+      "properties": [
+        {
+          "type": "X-openapi",
+          "url": "https://api.tzkt.io/v1/swagger.json"
+        }
+      ],
+      "contact": [
+        {
+          "fn": "Baking Bad Team"
+        }
+      ]
+    },
+    {
+      "name": "NextGen CarMap management API",
+      "description": "An api carmap",
+      "baseUrl": "https://carmap.next-gen.ro/swagger.json",
+      "properties": [
+        {
+          "type": "X-openapi",
+          "url": "https://carmap.next-gen.ro/swagger.json"
+        }
+      ]
+    },
+    {
+      "name": "BitOasis Public API",
+      "description": "BitOasis Technologies is the Middle East \u0026 North Africa\u2019s (MENA) largest online digital currency platform. Established in 2015, BitOasis operates from the United Arab Emirates (UAE) and currently aims its services at retail clients from the Gulf Cooperation Council (GCC) region, with plans to expand to the rest of the MENA market in the future. The services currently offered by BitOasis are as follows:\n\n\u002B A Bitcoin (BTC) wallet with multi-signature technology for long term storage of Bitcoin (BTC).\n\n\u002B A platform for basic buying/selling of digital currencies (referred to as the \u201CBitOasis Core\u201D).\n\n\u002B A platform for trading in digital currencies (referred to as the \u201CBitOasis Pro\u201D).\n\u002B A platform that facilitates sending and receiving digital currencies.\n\n\u002B A platform that facilitates online and offline storage of clients\u2019 digital assets.\n\n\nThe only services available for the public API are:\n\n\u002B Trading in digital currencies (referred to as the \u201CBitOasis Pro\u201D).\n\n\u002B Sending and receiving digital currencies.\n\n\nAnd we are planning to provide a public API for the rest of the services in the near future.\n",
+      "baseUrl": "https://api.bitoasis.net/v1/",
+      "properties": [
+        {
+          "type": "X-openapi",
+          "url": "https://api.bitoasis.net/doc/swagger.json"
+        }
+      ]
+    },
+    {
+      "name": "Ubiquity REST API",
+      "description": "Ubiquity provides a RESTful and uniform way to access blockchain resources,\nwith a rich and reusable model across multiple cryptocurrencies.\n\n[Documentation](https://app.blockdaemon.com/docs/ubiquity)\n\n### Protocols\n#### Mainnet\nThe following protocols are currently supported:\n* algorand\n* bitcoin\n* bitcoincash\n* dogecoin\n* ethereum\n* litecoin\n* near\n* oasis\n* polkadot\n* solana\n* stellar\n* tezos\n* xrp\n\n#### Testnet\n* bitcoin/testnet\n* bitcoincash/testnet\n* dogecoin/testnet\n* ethereum/goerli\n* litecoin/testnet\n\n#### Native\nUbiquity provides native access to all Blockchain nodes it supports.\n* bitcoin/(mainnet | testnet) - [RPC Documentation](https://developer.bitcoin.org/reference/rpc/)\n* ethereum/(mainnet | goerli) - [RPC Documentation](https://ethereum.org/en/developers/docs/apis/json-rpc/)\n* polkadot/mainnet - [Sidecar API Documentation](https://paritytech.github.io/substrate-api-sidecar/dist/)\n* polkadot/mainnet/http-rpc - [Polkadot RPC Documentation](https://polkadot.js.org/docs/substrate/rpc/)\n* algorand/mainnet - [Algod API Documentation](https://developer.algorand.org/docs/reference/rest-apis/algod/)\n* stellar/mainnet - [Stellar Horizon API Documentation](https://developers.stellar.org/api)\n* dogecoin/(mainnet | testnet) - [Dogecoin API Documentaion](https://developer.bitcoin.org/reference/rpc/)\n* oasis/mainnet - [Oasis Rosetta Gateway Documentation](https://www.rosetta-api.org/docs/api_identifiers.html#network-identifier)\n* near/mainnet - [NEAR RPC Documentation](https://docs.near.org/docs/api/rpc)\n* litecoin/mainnet - [Litecoin RPC Documentation](https://litecoin.info/index.php/Litecoin_API)\n* bitcoincash/mainnet - [Bitcoin Cash RPC Documentation](https://docs.bitcoincashnode.org/doc/json-rpc/)\n* tezos/mainnet - [Tezos RPC Documentation](https://tezos.gitlab.io/developer/rpc.html)\n\n\nA full URL example: https://svc.blockdaemon.com/universal/v1/bitcoin/mainnet\n\n##### Pagination\nCertain resources contain a lot of data, more than what\u0027s practical\nto return for a single request.\nWith the help of pagination, the data is split across multiple responses.\nEach response returns a subset of the items requested, and a continuation token.\n\nTo get the next batch of items, copy the returned continuation token\nto the continuation query parameter and repeat the request with the new URL.\nIn case no continuation token is returned, there is no more data available.\n",
+      "baseUrl": "https://svc.blockdaemon.com/universal/%7Bversion%7D",
+      "properties": [
+        {
+          "type": "X-openapi",
+          "url": "https://ubiquity.docs.blockdaemon.com/openapi.json"
+        }
+      ],
+      "contact": [
+        {
+          "fn": "Blockdaemon"
+        }
+      ]
+    },
+    {
+      "name": "Unstoppable Partner API",
+      "description": "The Partner API requires you to be authorized to access them. To access the Partner API and integrate it into your application, check our [Set up Partner API Access](https://docs.unstoppabledomains.com/partner/) guide.",
+      "baseUrl": "https://unstoppabledomains.com/api/v2/resellers/%7BresellerId%7D",
+      "properties": [
+        {
+          "type": "X-openapi",
+          "url": "https://raw.githubusercontent.com/unstoppabledomains/website-api-docs-v2/master/openapi.yaml"
+        }
+      ]
+    },
+    {
+      "name": "EKM Partner API",
+      "description": "Our new API allows partners to build significantly better integrations with the EKM platform.\r\n\r\nTo try out the below endpoints, or for full up to date representations of the request / response models, please see the [swagger page](https://api.ekm.net/swagger/index.html). (We display examples here, but the swagger page is guaranteed to show the complete model.)\r\n\r\nTo keep up to date with the latest updates, please see our [RSS feed](https://partners.ekm.net/ChangeLog/Feed) or the [partner dashboard](https://partners.ekm.net/).",
+      "baseUrl": "https://api.ekm.net/",
+      "properties": [
+        {
+          "type": "X-openapi",
+          "url": "https://api.ekm.net/swagger/v0/swagger.json"
+        }
+      ],
+      "contact": [
+        {
+          "fn": "EKM"
+        }
+      ]
+    },
+    {
+      "name": "Open Data Lab API - Netherlands Institute for Sound and Vision",
+      "description": "Get RDF for open datasets and for resources in the NISV catalogue.",
+      "baseUrl": "https://data.beeldengeluid.nl/swagger.json",
+      "properties": [
+        {
+          "type": "X-openapi",
+          "url": "https://data.beeldengeluid.nl/swagger.json"
+        }
+      ]
+    },
+    {
+      "name": "\u81FA\u7063\u8B49\u5238\u4EA4\u6613\u6240 OpenAPI",
+      "description": "\u672C\u5E73\u81FA\u63D0\u4F9B\u81FA\u7063\u8B49\u5238\u4EA4\u6613\u6240\u670D\u52D9API\uFF0C\u6B61\u8FCE\u5404\u4F4D\u4ECB\u63A5\u4F7F\u7528\u3002\u003Cbr\u003E\u003Cbr\u003E[\u4F7F\u7528\u689D\u6B3E](https://www.twse.com.tw/zh/page/terms/use.html)",
+      "baseUrl": "https://openapi.twse.com.tw/v1",
+      "properties": [
+        {
+          "type": "X-openapi",
+          "url": "https://openapi.twse.com.tw/swagger.json"
+        }
+      ]
     }
   ]
 }
