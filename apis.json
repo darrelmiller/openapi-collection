@@ -2,20 +2,10 @@
   "name": "Apis",
   "description": "Apis",
   "url": "https://github.com/darrelmiller/openapi-collection",
-  "created": "2022-12-19T23:39:57.4295654Z",
-  "modified": "2022-12-19T23:39:57.4296244Z",
+  "created": "2022-12-19T23:59:03.3265190Z",
+  "modified": "2022-12-19T23:59:03.3265856Z",
   "specificationVersion": "0.14",
   "apis": [
-    {
-      "name": "Jet Checkout",
-      "description": "",
-      "properties": [
-        {
-          "type": "X-openapi",
-          "url": "https://api.jetcheckout.com/openapi.json"
-        }
-      ]
-    },
     {
       "name": "GUT-VERSORGT-IN REST API",
       "description": "REST Api for the admin area and apps of gut-versorgt-in",
@@ -29,16 +19,6 @@
       "contact": [
         {
           "fn": "WAPP GmbH"
-        }
-      ]
-    },
-    {
-      "name": "Latoken Public API",
-      "description": "Welcome to LATOKEN Public API.\n\n# Basic Information\n\n- The base address is **https://api.latoken.com/v2**\n- All methods are returning JSON object\n- If you want to generate an API key for your account, please go to **https://exchange.latoken.com/account/apikeys**\n- You can refer to this guide for further information: **https://latoken.zendesk.com/hc/en-us/articles/360012042260-How-to-generate-an-API-key-**\n\n# WebSocket, P2P\n- Latoken WebSocket API documentation is located at [**https://api.latoken.com/doc/ws/**](/doc/ws/)\n\n- Latoken P2P API documentation is located at [**https://api.latoken.com/doc/p2p/**](/doc/p2p/)\n\n# Official client libraries\nOne may find official Latoken API client libraries for a set of programming languages:\n- C#: https://github.com/LATOKEN/latoken-api-v2-dotnet-client\n- Python: https://github.com/LATOKEN/latoken-api-v2-python-client\n- Java: https://github.com/LATOKEN/latoken-java-client\n- CCXT libraries: https://github.com/ccxt/ccxt\n\n  - Examples: \n\n    - Python: https://github.com/ccxt/ccxt/blob/master/examples/py/latoken-example.py\n  \n    - Javascript: https://github.com/ccxt/ccxt/blob/master/examples/js/latoken-example.js\n\n# Error Format\nErrors are returned in JSON format as follows:\n\u0060\u0060\u0060json\n{\n  \u0022result\u0022: false,\n  \u0022message\u0022: \u0022unable to find something somewhere\u0022,\n  \u0022error\u0022: \u0022NOT_FOUND\u0022,\n  \u0022status\u0022: \u0022FAILURE\u0022\n}\n\u0060\u0060\u0060\n### Error Codes\nHere is list of possible error codes:\n\n- \u0060\u0060INTERNAL_ERROR\u0060\u0060 - internal server error. You can contact our support to solve this problem.\n- \u0060\u0060SERVICE_UNAVAILABLE\u0060\u0060 - requested information currently not available. You can contact our support to solve this problem or retry later.\n- \u0060\u0060NOT_AUTHORIZED\u0060\u0060 - user\u0027s query not authorized. Check if you are logged in.\n- \u0060\u0060FORBIDDEN\u0060\u0060 - you don\u0027t have enough access rights.\n- \u0060\u0060BAD_REQUEST\u0060\u0060 - some bad request, for example bad fields values or something else. Read response message for more information.\n- \u0060\u0060NOT_FOUND\u0060\u0060 - entity not found. Read message for more information.\n- \u0060\u0060ACCESS_DENIED\u0060\u0060 - access is denied. Probably you don\u0027t have enough access rights, you contact our support.\n- \u0060\u0060REQUEST_REJECTED\u0060\u0060 - user\u0027s request rejected for some reasons. Check error message.\n- \u0060\u0060HTTP_MEDIA_TYPE_NOT_SUPPORTED\u0060\u0060 - http media type not supported.\n- \u0060\u0060MEDIA_TYPE_NOT_ACCEPTABLE\u0060\u0060 - media type not acceptable\n- \u0060\u0060METHOD_ARGUMENT_NOT_VALID\u0060\u0060 - one of method argument is invalid. Check argument types and error message for more information.\n- \u0060\u0060VALIDATION_ERROR\u0060\u0060 - check \u0060errors\u0060 field to get reasons.\n- \u0060\u0060ACCOUNT_EXPIRED\u0060\u0060 - restore your account or create a new one.\n- \u0060\u0060BAD_CREDENTIALS\u0060\u0060 - invalid username or password.\n- \u0060\u0060COOKIE_THEFT\u0060\u0060 - cookie has been stolen. Let\u0027s try reset your cookies.\n- \u0060\u0060CREDENTIALS_EXPIRED\u0060\u0060 - credentials expired.\n- \u0060\u0060INSUFFICIENT_AUTHENTICATION\u0060\u0060 - for example, 2FA required.\n- \u0060\u0060UNKNOWN_LOCATION\u0060\u0060 - user logged from unusual location, email confirmation required.\n- \u0060\u0060TOO_MANY_REQUESTS\u0060\u0060 - too many requests at the time. A response header \u0060X-Rate-Limit-Remaining\u0060 indicates the number of allowed request per a period.\n\n# Public And Private Endpoints\nLatoken API has two type of endpoints. **Public** and **Signed** endpoints. Public endpoints can be accessed by anyone and they mostly contain methods that return public market data (Order book, ticker, trades, exchange info etc...). Signed endpoints contain user related data and enable an opportunity to create, cancel and see the state of user accounts, orders and balances. Any signed endpoint contains \u0060/auth/\u0060 in its path.\n\n# Authorization\nFor signed endpoints, client should have \u0060Public Key\u0060 and \u0060Private Key\u0060. The request can be signed using \u0060HMAC-SHA256, HMAC-SHA384\u0060 or \u0060HMAC-SHA512\u0060. If the Hash header is not provided, the default algorithm will be \u0060HMAC-SHA256\u0060.\n## Request headers\n\u003E\n\n| Header key | Value description | Value example |\n |--------------|-----------|------------|\n| X-LA-APIKEY | \u0060Client Public Key\u0060 | dfa1234546546353-dfa32423432-e4a17781e |\n| X-LA-SIGNATURE | \u0060Request signature\u0060 | 45dec0cf062d5f79f94fa34d0e7a6c58cafe8bb5a00b34175226e579a1812775 |\n| X-LA-DIGEST | \u0060Hash function (optional)\u0060 | HMAC-SHA512 |\n\n\n## Signature\nThe signature of the request is created by using your \u0060Private Key\u0060 to sign the \u0060method\u0060 **\u002B** \u0060api endpoint\u0060 **\u002B** \u0060query string (optional, without \u0027?\u0027 at the begining)\u0060 **\u002B** \u0060body params (optional, without \u0027?\u0027 at the begining)\u0060 of the request. For example, if we want to make request to see our orders, we would use \u0060https://api.latoken.com/v2/auth/order\u0060 request. In that case, we would need to sign \u0060GET/v2/auth/order\u0060 part of request, and the result of signing should be placed in X-LA-SIGNATURE header. You can see signature examples in different languages below in the section Request Samples. Before signing the body params and/or query string, it should be made into a correctly formatted string according to the following rules:\n* all the entries are joined with \u2018\u0026\u2019, and each entry is a concatenation of key, \u2018=\u2019 sign and value.\n  * if value is a string, number or boolean than use its string representation (without double-quotes)\n  * if value is an object, then recursively build it, and use concatenation of \u2018{\u2019, built value, \u2018}\u2019.\n  * if value is an array, then recursively build it like an object, but each entry is just a value. Built values are joined with \u2018\u0026\u2019, and use concatenation of \u2018[\u2019, built value, \u2018]\u2019.\n\n# Withdrawal procedure\n\n**Using Endpoints:** \n* [/v2/auth/transaction/withdraw](/#operation/withdrawMoney)\n* [/v2/auth/transaction/withdraw/confirm](/#operation/confirmWithdrawal)\n\n**Permissions in API-key:**  \u0060WITHDRAW_WALLET\u0060, \u0060BYPASS_TWOFA\u0060(optional)\n\nSend a request to withdraw funds using [/v2/auth/transaction/withdraw](/#operation/withdrawMoney) using an API-key with has \u0060\u0060WITHDRAW_WALLET\u0060\u0060-permission.\n\n  The Full Access API-key has \u0060\u0060BYPASS_TWOFA\u0060\u0060-permission, which means that the \u0060\u0060twoFaCode\u0060\u0060 is not required to withdraw your funds. So you can omit the field \u0060\u0060twoFaCode\u0060\u0060, or set an empty string and it will be accepted. The other required fields should be set as usual.\n\n  If your API-key doesn\u0027t have \u0060\u0060BYPASS_TWOFA\u0060\u0060-permission, the request must contain your \u0060\u0060twoFaCode\u0060\u0060 and the other required fields.\n  \n  * **Google 2FA** / **Withdrawal 2FA**: use the generated code as the \u0060\u0060twoFaCode\u0060\u0060\n  * **SMS 2FA**: To receive SMS OTP Code, send a correctly formatted withdrawal request with an empty \u0060\u0060twoFaCode\u0060\u0060  field, after which you\u0027ll receive the SMS. Now repeat the signed API request, with the \u0060\u0060twoFaCode\u0060\u0060=SMS 2FA-code which you just received.\n  \nIf you receive the response that a code is required (\u0060codeRequired=true\u0060), an email has been sent to you with the confirmation code. The transaction has the status: \u0060TRANSACTION_STATUS_UNVERIFIED\u0060.\n\n  *  When you receive the code via email, send a signed API request to confirm the transaction using [/v2/auth/transaction/withdraw/confirm](/#operation/confirmWithdrawal), which needs the transaction-id and the received code. \n  \nAfter confirmation with code from email or if there was no code required, the tranaction has the status: \u0060\u0060TRANSACTION_STATUS_PENDING\u0060\u0060 or \u0060\u0060TRANSACTION_STATUS_CHECKING\u0060\u0060 and it will be completed.\n\n\n# Request Samples On JavaScript, Python, PHP, Java, C#\nTo Slide down to \u0060JavaScript, Python, PHP, Java, C#\u0060 samples just click on an endpoint:\n- [/v2/currency](/#operation/getActiveCurrencies) *(get active currencies)*\n- [/v2/auth/account](/#operation/getBalancesByUser) *(get balances)*\n- [/v2/auth/account/filtered](/#operation/getBalancesByUserCurrenciesAndTypes) *(get balances of current user, filtered by currencies and account types)*\n- [/v2/auth/order](/#operation/getMyOrders) *(get all my orders)*\n- [/v2/auth/order/place](/#operation/placeOrder) *(placing a new order)*\n- [/v2/auth/order/cancel](/#operation/cancelOrder) *(cancel one order by ID)*\n- [/v2/auth/transaction/withdraw](/#operation/withdrawMoney) *(request withdrawal)*\n- [/v2/auth/transaction/withdraw/cancel](/#operation/cancelWithdrawal) *(cancel withdrawal)*\n- [/v2/auth/spot/deposit](/#operation/depositSpotAccount) *(deposit spot account)*\n",
-      "properties": [
-        {
-          "type": "X-openapi",
-          "url": "https://api.latoken.com/doc/v2/swagger.json"
         }
       ]
     },
@@ -92,27 +72,6 @@
       ]
     },
     {
-      "name": "CSH API",
-      "description": "",
-      "properties": [
-        {
-          "type": "X-openapi",
-          "url": "https://is.handball.cz/swagger/v1/swagger.json"
-        }
-      ]
-    },
-    {
-      "name": "\u81FA\u7063\u8B49\u5238\u4EA4\u6613\u6240 OpenAPI",
-      "description": "\u672C\u5E73\u81FA\u63D0\u4F9B\u81FA\u7063\u8B49\u5238\u4EA4\u6613\u6240\u670D\u52D9API\uFF0C\u6B61\u8FCE\u5404\u4F4D\u4ECB\u63A5\u4F7F\u7528\u3002\u003Cbr\u003E\u003Cbr\u003E[\u4F7F\u7528\u689D\u6B3E](https://www.twse.com.tw/zh/page/terms/use.html)",
-      "baseUrl": "https://openapi.twse.com.tw/v1",
-      "properties": [
-        {
-          "type": "X-openapi",
-          "url": "https://openapi.twse.com.tw/v1/swagger.json"
-        }
-      ]
-    },
-    {
       "name": "Para\u015F\u00FCt - API V4",
       "description": "# G\u0130R\u0130\u015E\n\n## API Hakk\u0131nda\n\nPara\u015F\u00FCt API\u0027yi kullanmak veya g\u00F6r\u00FC\u015Flerinizi bizimle payla\u015Fmak isterseniz l\u00FCtfen bizimle destek@parasut.com adresi \u00FCzerinden ileti\u015Fime ge\u00E7iniz.\n\nAPI\u0027yi kullanarak Para\u015F\u00FCt verilerine ula\u015Fabilir ve kendi yazd\u0131\u011F\u0131n\u0131z uygulamalar ile entegre edebilirsiniz. API vas\u0131tas\u0131yla Para\u015F\u00FCt Web aray\u00FCz\u00FC ile yap\u0131lan hemen her i\u015Flemi ger\u00E7ekle\u015Ftirebilirsiniz.\n\n\n- API geli\u015Ftirmesinde \u00E7o\u011Funlukla JSONAPI (http://jsonapi.org/) standartlar\u0131na uymaya \u00E7al\u0131\u015Ft\u0131k.\n\n- D\u00F6k\u00FCmantasyon olu\u015Fturulmas\u0131nda ise OpenAPI-Swagger 2.0 kulland\u0131k.\n\n- API hizmetimizin \u0060BASE_URL\u0060i \u0060https://api.parasut.com\u0060 \u015Feklindedir.\n\n- V4 endpointlerine ula\u015Fmak i\u00E7in \u0060https://api.parasut.com/v4\u0060 \u015Feklinde kullanabilirsiniz.\n\n## Genel Bilgiler\n\n- API metodlar\u0131na eri\u015Fmek i\u00E7in baz URL olarak \u0060https://api.parasut.com/v4/firma_no\u0060 adresi kullan\u0131l\u0131r.\n  - Bu yap\u0131da kullan\u0131lan \u0060firma_no\u0060 parametresi bilgisine eri\u015Filmek istenin firman\u0131n Para\u015F\u00FCt veritaban\u0131ndaki kay\u0131t numaras\u0131d\u0131r.\n  - \u00D6rne\u011Fin 115 numaral\u0131 firman\u0131n m\u00FC\u015Fteri/tedarik\u00E7i listesine eri\u015Fmek i\u00E7in \u0060https://api.parasut.com/v4/115/contacts\u0060 adresi kullan\u0131l\u0131r.\n- \u0130stekleri g\u00F6nderirken \u0060Content-Type\u0060 header\u0027\u0131 olarak \u0060application/json\u0060 veya \u0060application/vnd.api\u002Bjson\u0060 g\u00F6ndermelisiniz.\n- Yeni bir kay\u0131t olu\u015Ftururken **ilgili** kayd\u0131n \u0060ID\u0060 parametresini bo\u015F g\u00F6ndermeli veya hi\u00E7 g\u00F6ndermemelisiniz.\n  - \u00D6rnek: Sat\u0131\u015F faturas\u0131 olu\u015Ftururken \u0060data-\u003Eid\u0060 bo\u015F olmal\u0131, ama \u0060relationships-\u003Econtact-\u003Edata-\u003Eid\u0060 dolu olmal\u0131, \u00E7\u00FCnk\u00FC g\u00F6nderdi\u011Finiz m\u00FC\u015Fterinizin ID\u0027si daha \u00F6nceden elinizde bulunmal\u0131d\u0131r. Ayn\u0131 \u015Fekilde \u0060relationships-\u003Edetails-\u003Edata\u0060 i\u00E7erisinde tan\u0131mlad\u0131\u011F\u0131n\u0131z ID\u0027ler de bo\u015F olmal\u0131, \u00E7\u00FCnk\u00FC hen\u00FCz fatura kalemi yaratmad\u0131n\u0131z.\n- API endpointlerine ula\u015Fmak i\u00E7in, ald\u0131\u011F\u0131n\u0131z \u0060access_token\u0060\u0027\u0131 sorgulara \u0060Authorization\u0060 header\u0027\u0131 olarak \u0060Bearer access_token\u0060 \u015Feklinde g\u00F6ndermelisiniz.\n- Dakikada 60 adet istek g\u00F6nderebilirsiniz.\n\n# Authentication\n\n\u003C!-- ReDoc-Inject: \u003Csecurity-definitions\u003E --\u003E\n\nPara\u015F\u00FCt API kimlik do\u011Frulama i\u00E7in oAuth2 kullanmaktad\u0131r. Bu protokol\u00FC destekleyen istemci k\u00FCt\u00FCphanelerini kullanarak oturum a\u00E7abilir ve API\u0027yi kullanabilirsiniz.\n\nGerekli CLIENT_ID, CLIENT_SECRET ve REDIRECT_URL bilgilerini almak i\u00E7in destek@parasut.com adresine mail atabilirsiniz.\n\nKimlik do\u011Frulama i\u015Fleminin ba\u015Far\u0131l\u0131 olmas\u0131 durumunda bir adet kimlik jetonu (authentication token) ve bir adet de yenileme jetonu (refresh token) g\u00F6nderilecektir. Kimlik jetonu 2 saat s\u00FCreyle ge\u00E7erlidir ve her istekte http ba\u015Fl\u0131k bilgilerinin i\u00E7erisinde g\u00F6nderilmelidir. Bu s\u00FCrenin sonunda kimlik jetonu ge\u00E7erlili\u011Fini yitirecektir ve yenileme jetonu kullan\u0131larak tekrar \u00FCretilmesi gerekmektedir.\n\n## access_token almak:\n\naccess_token alman\u0131z i\u00E7in iki farkl\u0131 se\u00E7enek bulunmaktad\u0131r.\n\nKullan\u0131m \u015Feklinize ba\u011Fl\u0131 olarak iki y\u00F6ntemden birini tercih etmelisiniz.\n\n### 1. grant_type=authorization_code\n\nBu y\u00F6ntemi kullanabilmek i\u00E7in \u00F6ncelikle a\u015Fa\u011F\u0131da belirtildi\u011Fi gibi kullan\u0131c\u0131y\u0131 ba\u015Far\u0131l\u0131 authentication i\u015Fleminin ard\u0131ndan y\u00F6nlendirmek istedi\u011Finiz \u0060REDIRECT_URL\u0060\u0027i bize ula\u015Farak kay\u0131t ettirmeniz gerekmektedir. \u0060REDIRECT_URL\u0060 varsay\u0131lan olarak \u0060urn:ietf:wg:oauth:2.0:oob\u0060 gelmektedir.\n\nSize \u00F6zel bir REDIRECT_URL tan\u0131mlamak isterseniz destek@parasut.com adresine mail atabilirsiniz.\n\n1. Kullan\u0131c\u0131y\u0131 \u015Fu adrese y\u00F6nlendirin:\n\n  \u0060\u0060\u0060\n  BASE_URL/oauth/authorize?client_id=CLIENT_ID\u0026redirect_uri=REDIRECT_URL\u0026response_type=code\n  \u0060\u0060\u0060\n\n2. Oturum a\u00E7m\u0131\u015Fsa ve uygulamay\u0131 kabul ederse, kullan\u0131c\u0131 sizin tan\u0131mlad\u0131\u011F\u0131n\u0131z REDIRECT_URL\u0027e \u015Fu \u015Fekilde gelmesi gerekiyor:\n  \u0060REDIRECT_URL?code=xxxxxxx\u0060\n\n3. Burada size gelen \u0022code\u0022 parametresi ile access token almal\u0131s\u0131n\u0131z.\n\n\u0060\u0060\u0060bash\ncurl -F grant_type=authorization_code \\\n-F client_id=CLIENT_ID \\\n-F client_secret=CLIENT_SECRET \\\n-F code=RETURNED_CODE \\\n-F redirect_uri=REDIRECT_URL \\\n-X POST BASE_URL/oauth/token\n\u0060\u0060\u0060\n\n### 2. grant_type=password\n\nE-posta ve \u015Fifre ile access_token alman\u0131z i\u00E7in a\u015Fa\u011F\u0131daki istekte size \u00F6zel alanlar\u0131 doldurarak POST iste\u011Fi atman\u0131z gerekmektedir.\n\n\u0060\u0060\u0060bash\ncurl -F grant_type=password \\\n-F client_id=CLIENT_ID \\\n-F client_secret=CLIENT_SECRET \\\n-F username=YOUREMAIL \\\n-F password=YOURPASSWORD \\\n-F redirect_uri=urn:ietf:wg:oauth:2.0:oob \\\n-X POST BASE_URL/oauth/token\n\u0060\u0060\u0060\n\n### Sonu\u00E7\n\nHer iki y\u00F6ntem sonucunda size a\u015Fa\u011F\u0131daki gibi bir sonu\u00E7 d\u00F6necektir:\n\n\u0060\u0060\u0060json\n{\n \u0022access_token\u0022: \u0022XYZXYZXYZ\u0022,\n \u0022token_type\u0022: \u0022bearer\u0022,\n \u0022expires_in\u0022: 7200,\n \u0022refresh_token\u0022: \u0022ABCABCABC\u0022\n}\n\u0060\u0060\u0060\n\nBurada d\u00F6nen \u0060access_token\u0060\u0027\u0131 API endpointlerine ula\u015Fmak i\u00E7in g\u00F6nderdi\u011Finiz sorgulara \u0060Authorization\u0060 header\u0027\u0131 olarak \u0060Bearer XYZXYZXYZ\u0060 \u015Feklinde eklemeniz gerekiyor.\n\n\n#### Refresh token ile yeni access_token alma \u00F6rne\u011Fi:\n\n\u0060access_token\u0060 ge\u00E7erlili\u011Fini 2 saat i\u00E7erisinde yitirdi\u011Fi i\u00E7in \u0060refresh_token\u0060 ile yeni token alabilirsiniz.\n\n\u0060\u0060\u0060bash\ncurl -F grant_type=refresh_token \\\n-F client_id=CLIENT_ID \\\n-F client_secret=CLIENT_SECRET \\\n-F refresh_token=REFRESH_TOKEN \\\n-X POST BASE_URL/oauth/token\n\u0060\u0060\u0060\n\n\u0060refresh_token\u0060 ile yeni bir \u0060access_token\u0060 al\u0131rken ayn\u0131 zamanda yeni bir \u0060refresh_token\u0060 da almaktas\u0131n\u0131z. Dolay\u0131s\u0131yla, daha sonra yeniden bir \u0060access_token\u0060 alma iste\u011Finizde size d\u00F6nen yeni \u0060refresh_token\u0060\u0131 kullanmal\u0131s\u0131n\u0131z.\n\n# SIK KULLANILAN \u0130\u015ELEMLER\n\n## Kullan\u0131c\u0131 Bilgisi\n\n\u0060access_token\u0060 ald\u0131\u011F\u0131n\u0131z kullan\u0131c\u0131n\u0131n genel bilgilerini g\u00F6rmek i\u00E7in [/me](/#operation/showMe) adresini kullanabilirsiniz.\n\n## Sat\u0131\u015F Faturas\u0131 Olu\u015Fturma\n\nSat\u0131\u015F faturas\u0131 olu\u015Fturmak i\u00E7in bir m\u00FC\u015Fteri (\u0060contact\u0060) \u0060id\u0060\u0027si ve bir veya birden fazla \u00FCr\u00FCn (\u0060product\u0060) \u0060id\u0060\u0027sine ihtiyac\u0131n\u0131z vard\u0131r.\n\n### M\u00FC\u015Fteri\n\n##### Yeni bir m\u00FC\u015Fteri ile\n\nE\u011Fer ihtiya\u00E7 duydu\u011Funuz m\u00FC\u015Fteri bilgisi hen\u00FCz yoksa, \u00F6ncelikle m\u00FC\u015Fteri olu\u015Fturman\u0131z gereklidir. Bunun i\u00E7in [M\u00FC\u015Fteri olu\u015Fturma](/#operation/createContact) endpoint\u0027ini kullanmal\u0131s\u0131n\u0131z. Ba\u015Far\u0131l\u0131 bir \u015Fekilde m\u00FC\u015Fteri olu\u015Fturulursa size d\u00F6necek olan yan\u0131t ihtiya\u00E7 duyaca\u011F\u0131n\u0131z m\u00FC\u015Fteri \u0060id\u0060\u0027sini i\u00E7erir.\n\n##### Mevcut bir m\u00FC\u015Fteri ile\n\nE\u011Fer daha \u00F6nceden zaten olu\u015Fturdu\u011Funuz bir m\u00FC\u015Fteri ile ili\u015Fkili bir sat\u0131\u015F faturas\u0131 olu\u015Fturacaksan\u0131z \u00F6ncelikle o m\u00FC\u015Fterinin \u0060id\u0060\u0027sini \u00F6\u011Frenmeniz gerekir. Bunun i\u00E7in [M\u00FC\u015Fteri listesi](/#operation/listContacts) endpoint\u0027ini kullanabilirsiniz. M\u00FC\u015Fteri listesi endpoint\u0027i isim, e-posta, vergi numaras\u0131 gibi \u00E7e\u015Fitli filtreleri destekler. Bunlar\u0131 kullanarak arad\u0131\u011F\u0131n\u0131z m\u00FC\u015Fteriyi bulabilirsiniz.\n\n### \u00DCr\u00FCn\n\n##### Yeni bir \u00FCr\u00FCn ile\n\nE\u011Fer ihtiya\u00E7 duydu\u011Funuz \u00FCr\u00FCn bilgisi hen\u00FCz yoksa, \u00F6ncelikle \u00FCr\u00FCn olu\u015Fturman\u0131z gereklidir. Bunun i\u00E7in [\u00DCr\u00FCn olu\u015Fturma](/#operation/createProduct) endpoint\u0027ini kullanmal\u0131s\u0131n\u0131z. Ba\u015Far\u0131l\u0131 bir \u015Fekilde \u00FCr\u00FCn olu\u015Fturulursa size d\u00F6necek olan yan\u0131t ihtiya\u00E7 duyaca\u011F\u0131n\u0131z \u00FCr\u00FCn \u0060id\u0060\u0027sini i\u00E7erir.\n\n##### Mevcut bir \u00FCr\u00FCn ile\n\nE\u011Fer daha \u00F6nceden olu\u015Fturdu\u011Funuz bir \u00FCr\u00FCn\u00FC kullanarak bir sat\u0131\u015F faturas\u0131 olu\u015Fturacaksan\u0131z \u00F6ncelikle o \u00FCr\u00FCn\u00FCn \u0060id\u0060\u0027sini \u00F6\u011Frenmeniz gerekir. Bunun i\u00E7in [\u00DCr\u00FCn listesi](/#operation/listProducts) endpoint\u0027ini kullanabilirsiniz. \u00DCr\u00FCn listesi endpoint\u0027i isim, kod gibi \u00E7e\u015Fitli filtreleri destekler. Bunlar\u0131 kullanarak arad\u0131\u011F\u0131n\u0131z \u00FCr\u00FCn\u00FC bulabilirsiniz.\n\n---\n\n\u0130htiya\u00E7 duydu\u011Funuz m\u00FC\u015Fteri ve \u00FCr\u00FCn \u0060id\u0060\u0027lerini ald\u0131ktan sonra [Sat\u0131\u015F Faturas\u0131 Olu\u015Fturma](/#operation/createSalesInvoice) endpoint\u0027i ile sat\u0131\u015F faturas\u0131 olu\u015Fturabilirsiniz. Endpoint\u0027in tan\u0131m\u0131nda sa\u011F tarafta bekledi\u011Fimiz veri \u015Fekli bulunmaktad\u0131r, a\u015Fa\u011F\u0131daki bilgileri verinin \u015Fekli ile k\u0131yaslamak daha a\u00E7\u0131klay\u0131c\u0131 olabilir.\n\nDikkat edilecek noktalar:\n* \u0060relationships\u0060 alt\u0131ndaki \u0060contact\u0060\u0027te bulunan \u0060id\u0060 alan\u0131na m\u00FC\u015Fteri \u0060id\u0060\u0027sini girmeniz gereklidir.\n* \u0060relationships\u0060 alt\u0131ndaki \u0060details\u0060 k\u0131sm\u0131 bir listedir (\u0060array\u0060) ve fatura kalemlerini temsil eder. Bu listenin her eleman\u0131n\u0131n ili\u015Fkili oldu\u011Fu bir \u00FCr\u00FCn vard\u0131r. Yani \u0060details\u0060 alt\u0131ndaki her eleman\u0131n kendine ait bir \u0060relationships\u0060 k\u0131sm\u0131 mevcuttur. Buradaki \u0060product\u0060 \u0060id\u0060 alan\u0131 \u00FCstteki \u00FCr\u00FCn ad\u0131mlar\u0131nda elde etti\u011Finiz \u0060id\u0060\u0027yi koyman\u0131z gereken yerdir.\n\n## Sat\u0131\u015F Faturas\u0131na Tahsilat Ekleme\n\n[Tahsilat ekleme](/#operation/paySalesInvoice) k\u0131sm\u0131ndaki ilgili alanlar\u0131 doldurarak sat\u0131\u015F faturas\u0131na tahsilat ekleyebilirsiniz.\n\n## Sat\u0131\u015F Faturas\u0131n\u0131n Tahsilat\u0131n\u0131 Silme\n\nBir sat\u0131\u015F faturas\u0131n\u0131n tahsilat\u0131n\u0131 silmek asl\u0131nda o tahsilat\u0131 olu\u015Fturan para ak\u0131\u015F i\u015Flemini silmek demektir. Bir i\u015Flemi silmeden \u00F6nce o i\u015Flemin \u0060id\u0060\u0027sine ihtiyac\u0131n\u0131z vard\u0131r.\n\nBir sat\u0131\u015F faturas\u0131na ait tahsilatlar\u0131 almak i\u00E7in [Sat\u0131\u015F faturas\u0131 bilgilerini alma (show)](/#operation/showSalesInvoice) endpoint\u0027ine istek atarken \u0060?include=payments\u0060 parametresini de eklemelisiniz. Bu size sat\u0131\u015F faturas\u0131 bilgilerine ilave olarak tahsilatlar\u0131 da verir.\n\nTahsilatlar ile birlikte o tahsilatlar\u0131 olu\u015Fturan i\u015Flemleri de almak i\u00E7in yine ayn\u0131 endpoint\u0027e \u0060?include=payments.transaction\u0060 parametresini ekleyerek istek yapman\u0131z gerekir. Bu size hem sat\u0131\u015F faturas\u0131 bilgilerini, hem tahsilat bilgilerini hem de tahsilat\u0131 olu\u015Fturan i\u015Flemlerin bilgilerini verir.\n\n\u0060?include=payments.transaction\u0060 parametresini kullanarak yapt\u0131\u011F\u0131n\u0131z istek ile i\u015Flem (\u0060transaction\u0060) \u0060id\u0060\u0027sini ald\u0131ktan sonra [i\u015Flem silme](/#operation/deleteTransaction) endpoint\u0027inde bu \u0060id\u0060\u0027yi kullanarak silme i\u015Flemini yapabilirsiniz.\n\n## Sat\u0131\u015F Faturas\u0131 Resmile\u015Ftirme\n\nOlu\u015Fturdu\u011Funuz bir sat\u0131\u015F faturas\u0131 varsa onu e-Ar\u015Fiv veya e-Fatura olarak resmile\u015Ftirmek i\u00E7in a\u015Fa\u011F\u0131dakileri yapman\u0131z gereklidir.\n\n1. \u00D6ncelikle m\u00FC\u015Fterinizin e-Fatura kullan\u0131c\u0131s\u0131 olup olmad\u0131\u011F\u0131n\u0131 \u00F6\u011Frenmelisiniz. Bunun i\u00E7in m\u00FC\u015Fterinizin e-Fatura gelen kutusu olup olmad\u0131\u011F\u0131na bakmak gereklidir. [e-Fatura gelen kutusu](/#operation/listEInvoiceInboxes) endpoint\u0027ine m\u00FC\u015Fterinin vkn\u0027sini kullanarak bir istek yapt\u0131\u011F\u0131n\u0131zda e\u011Fer bir gelen kutusu oldu\u011Funa dair yan\u0131t al\u0131yorsan\u0131z m\u00FC\u015Fteri e-Fatura kullan\u0131c\u0131s\u0131d\u0131r. M\u00FC\u015Fteri e-Fatura kullan\u0131c\u0131s\u0131 ise resmile\u015Ftirme i\u00E7in e-Fatura olu\u015Fturmak, e-Fatura kullan\u0131c\u0131s\u0131 de\u011Filse e-Ar\u015Fiv olu\u015Fturmak gereklidir. \u0130hracat Faturalar\u0131 her zaman e-Fatura olarak resmile\u015Ftirilmelidir.\n\nOlu\u015Fturdu\u011Funuz e-Fatura, e-Ar\u015Fiv ve e-Smm\u2019nin d\u00FCzenleme tarihi e-Fatura/e-Smm\u2019ye ge\u00E7i\u015F sa\u011Flad\u0131\u011F\u0131n\u0131z aktivasyon tarihinden sonra olmal\u0131d\u0131r. Ayn\u0131 zamanda olu\u015Fturdu\u011Funuz e-Fatura\u2019n\u0131n d\u00FCzenleme tarihi al\u0131c\u0131n\u0131n etiketi kullanmaya ba\u015Flad\u0131\u011F\u0131 tarihten de \u00F6nce olamaz. Al\u0131c\u0131n\u0131n etiketi kullanmaya ba\u015Flad\u0131\u011F\u0131 tarihi e-Fatura gelen kutusunu \u00E7ekerek g\u00F6r\u00FCnt\u00FCleyebilirsiniz.\n\n2. e-Fatura / e-Ar\u015Fiv / e-Smm olu\u015Fturma:\n   * \u00D6nceki ad\u0131mda m\u00FC\u015Fterinin e-Fatura kullan\u0131c\u0131s\u0131 oldu\u011Fu \u00F6\u011Frenildiyse,  [e-Fatura olu\u015Fturma endpoint\u0027i](/#operation/createEInvoice) kullan\u0131larak e-Fatura olu\u015Fturmak gereklidir.\n   * \u00D6nceki ad\u0131mda m\u00FC\u015Fterinin e-Ar\u015Fiv kullan\u0131c\u0131s\u0131 oldu\u011Fu \u00F6\u011Frenildiyse,  [e-Ar\u015Fiv olu\u015Fturma endpoint\u0027i](/#operation/createEArchive) kullan\u0131larak e-Ar\u015Fiv olu\u015Fturmak gereklidir.\n   * E\u011Fer makbuz kullan\u0131c\u0131s\u0131 iseniz, [e-Smm olu\u015Fturma endpoint\u0027ini](/#operation/createESmm) kullanarak e-Smm olu\u015Fturman\u0131z gereklidir.\n\n   e-Fatura / e-Ar\u015Fiv / e-Smm olu\u015Fturma i\u015Flemi synchronous de\u011Fildir. Yani istek arka planda yerine getirilir. Bu y\u00FCzden e-Fatura / e-Ar\u015Fiv / e-Smm olu\u015Fturma endpoint\u0027leri cevap olarak olu\u015Fturma i\u015Fleminin durumunu takip edebilece\u011Finiz bir i\u015Flem \u0060id\u0060\u0027si d\u00F6ner. Bu i\u015Flem \u0060id\u0060\u0027sini [sorgulama](/#tag/TrackableJobs) endpoint\u0027inde belirli aral\u0131klarla(\u0060id\u0060\u0027nin kullan\u0131m s\u00FCresi olu\u015Fturulduktan sonra 15 dakikad\u0131r) kullan\u0131p olu\u015Fturma i\u015Fleminin durumunu takip etmeniz gerekmektedir. \u0130\u015Flem durumu ile ilgili a\u015Fa\u011F\u0131daki yan\u0131tlar\u0131 alabilirsiniz:\n   * \u0060status: \u0022pending\u0022\u0060 i\u015Flemin s\u0131rada oldu\u011Funu, hen\u00FCz ba\u015Flamad\u0131\u011F\u0131n\u0131 g\u00F6sterir.\n   * \u0060status: \u0022running\u0022\u0060 i\u015Flemin yap\u0131lmakta oldu\u011Funu ancak hen\u00FCz sonu\u00E7lanmad\u0131\u011F\u0131n\u0131 g\u00F6sterir.\n   * \u0060status: \u0022error\u0022\u0060 i\u015Flemde bir hata oldu\u011Fu anlam\u0131na gelir. D\u00F6nen yan\u0131tta hata mesaj\u0131n\u0131 inceleyebilirsiniz.\n   * \u0060status: \u0022done\u0022\u0060 i\u015Flemin ba\u015Far\u0131l\u0131 bir \u015Fekilde sonu\u00E7land\u0131\u011F\u0131n\u0131 g\u00F6sterir.\n3. e-Fatura / e-Ar\u015Fiv / e-Smm i\u015Fleminin ba\u015Far\u0131l\u0131 bir \u015Fekilde sonu\u00E7land\u0131\u011F\u0131n\u0131 g\u00F6rd\u00FCkten sonra e-Fatura / e-Ar\u015Fiv / e-Smm bilgilerini almak i\u00E7in [Sat\u0131\u015F faturas\u0131 bilgilerini alma (show)](/#operation/showSalesInvoice) endpoint\u0027ine \u0060?include=active_e_document\u0060 parametresi ile istek yapman\u0131z gerekmektedir. Buradan s\u0131radaki ad\u0131mda ihtiya\u00E7 duyaca\u011F\u0131n\u0131z e-Fatura / e-Ar\u015Fiv / e-Smm \u0060id\u0060\u0027lerini ve ba\u015Fka bilgileri de alabilirsiniz.\n4. e-Fatura / e-Ar\u015Fiv / e-Smm ba\u015Far\u0131yla resmile\u015Ftirildikten sonra m\u00FC\u015Fterilerinize PDF olarak g\u00F6ndermek isteyebilirsiniz. Bunun i\u00E7in:\n   * e-Ar\u015Fiv i\u00E7in, 4. ad\u0131mda elde edece\u011Finiz e-Ar\u015Fiv \u0060id\u0060\u0027sini kullanarak [e-Ar\u015Fiv PDF](/#operation/showEArchivePdf) endpoint\u0027ine istek atabilirsiniz. Bu endpoint PDF hen\u00FCz yoksa bo\u015F bir yan\u0131t ile birlikte 204 d\u00F6ner. Yani 204 almayana kadar belirli aral\u0131klarla bu endpoint\u0027e istek yapman\u0131z gerekmektedir. Ge\u00E7erli yan\u0131t ald\u0131\u011F\u0131n\u0131zda size d\u00F6necek olan PDF URL 1 saat i\u00E7in ge\u00E7erlidir. Bu y\u00FCzden bu linki direk olarak m\u00FC\u015Fterinizle **payla\u015Fmamal\u0131s\u0131n\u0131z**. \u0130ndirip m\u00FC\u015Fterinize kendiniz g\u00F6ndermelisiniz.\n   * e-Ar\u015Fiv i\u00E7in anlat\u0131lan senaryonun ayn\u0131s\u0131 e-Fatura i\u00E7in de ge\u00E7erlidir. Tek farkl\u0131 k\u0131s\u0131m iste\u011Fi yapaca\u011F\u0131n\u0131z endpoint\u0027tir: [e-Fatura PDF](/#operation/showEInvoicePdf)\n   * e-Ar\u015Fiv i\u00E7in anlat\u0131lan senaryonun ayn\u0131s\u0131 e-Smm i\u00E7in de ge\u00E7erlidir. Tek farkl\u0131 k\u0131s\u0131m iste\u011Fi yapaca\u011F\u0131n\u0131z endpoint\u0027tir: [e-Smm PDF](/#operation/showESmmPdf)\n\n## Belirli Firmalar \u0130\u00E7in \u00D6zel Gereksinimler\n\nE\u011Fer \u00F6zel gereksinim duyan bir firmaya e-fatura kesiyorsan\u0131z, bu k\u0131sm\u0131 detayl\u0131 bir \u015Fekilde g\u00F6zden ge\u00E7iriniz. A\u015Fa\u011F\u0131da destekledi\u011Fimiz \u00F6zel firmalar\u0131n kendi ihtiya\u00E7lar\u0131na g\u00F6re olu\u015Fturdu\u011Fumuz alanlar\u0131 g\u00F6rebilirsiniz.\n\n### SGK i\u00E7in gerekli \u00F6zel alanlar\n\nSGK\u0027ya fatura kesebilmek i\u00E7in a\u015Fa\u011F\u0131daki json\u0027u inceleyebilirsiniz. \n\n\u0060\u0060\u0060 json\ncustom_requirement_params: {\n  integration: {     \n    data: {       \n      additional_invoice_type: \u0027SAGLIK_ECZ\u0027,\n      tax_payer_code: \u0027xx\u0027,\n      tax_payer_name: \u0027xx\u0027,\n      file_number: \u0027xx\u0027,\n      term_start_date: \u00272021-01-02\u0027,\n      term_end_date: \u00272021-01-04\u0027\n    }\n  }\n}\n\u0060\u0060\u0060\n\nBuradaki data\u0027n\u0131n i\u00E7indeki alanlar\u0131n anlamlar\u0131:\n\n- \u0060additional_invoice_type\u0060: ilave fatura tipi\n- \u0060tax_payer_code\u0060: m\u00FCkellef kodu\n- \u0060tax_payer_name\u0060: m\u00FCkellef ad\u0131\n- \u0060file_number\u0060: dosya numaras\u0131\n- \u0060term_start_date\u0060: d\u00F6nem ba\u015Flang\u0131\u00E7\n- \u0060term_end_date\u0060: d\u00F6nem biti\u015F\n\nEk olarak \u0060additional_invoice_type\u0060 a\u015Fa\u011F\u0131daki de\u011Ferlerden biri olmal\u0131d\u0131r.\n\nAvailable: *SAGLIK_ECZ, SAGLIK_HAS, SAGLIK_OPT, SAGLIK_MED, ABONELIK, MAL_HIZMET, DIGER*\n\n## \u0130rsaliye Olu\u015Fturma\n\n\u0130rsaliye olu\u015Fturmak i\u00E7in bir m\u00FC\u015Fteri/tedarik\u00E7i (\u0060contact\u0060) \u0060id\u0060\u0027si ve bir veya birden fazla \u00FCr\u00FCn (\u0060product\u0060) \u0060id\u0060\u0027sine ihtiyac\u0131n\u0131z vard\u0131r.\n\n### M\u00FC\u015Fteri/Tedarik\u00E7i\n\n##### Yeni bir m\u00FC\u015Fteri/tedarik\u00E7i ile\n\nE\u011Fer ihtiya\u00E7 duydu\u011Funuz m\u00FC\u015Fteri/tedarik\u00E7i bilgisi hen\u00FCz yoksa, \u00F6ncelikle m\u00FC\u015Fteri/tedarik\u00E7i olu\u015Fturman\u0131z gereklidir. Bunun i\u00E7in [M\u00FC\u015Fteri/Tedarik\u00E7i olu\u015Fturma](/#operation/createContact) endpoint\u0027ini kullanmal\u0131s\u0131n\u0131z. Ba\u015Far\u0131l\u0131 bir \u015Fekilde m\u00FC\u015Fteri/tedarik\u00E7i olu\u015Fturulursa size d\u00F6necek olan yan\u0131t ihtiya\u00E7 duyaca\u011F\u0131n\u0131z m\u00FC\u015Fteri/tedarik\u00E7i \u0060id\u0060\u0027sini i\u00E7erir.\n\n##### Mevcut bir m\u00FC\u015Fteri/tedarik\u00E7i ile\n\nE\u011Fer daha \u00F6nceden zaten olu\u015Fturdu\u011Funuz bir m\u00FC\u015Fteri/tedarik\u00E7i ile ili\u015Fkili bir irsaliye olu\u015Fturacaksan\u0131z \u00F6ncelikle o m\u00FC\u015Fteri/tedarik\u00E7inin \u0060id\u0060\u0027sini \u00F6\u011Frenmeniz gerekir. Bunun i\u00E7in [M\u00FC\u015Fteri/tedarik\u00E7i listesi](/#operation/listContacts) endpoint\u0027ini kullanabilirsiniz. M\u00FC\u015Fteri/tedarik\u00E7i listesi endpoint\u0027i isim, e-posta, vergi numaras\u0131 gibi \u00E7e\u015Fitli filtreleri destekler. Bunlar\u0131 kullanarak arad\u0131\u011F\u0131n\u0131z m\u00FC\u015Fteri/tedarik\u00E7iyi bulabilirsiniz.\n\n### \u00DCr\u00FCn\n\n##### Yeni bir \u00FCr\u00FCn ile\n\nE\u011Fer ihtiya\u00E7 duydu\u011Funuz \u00FCr\u00FCn bilgisi hen\u00FCz yoksa, \u00F6ncelikle \u00FCr\u00FCn olu\u015Fturman\u0131z gereklidir. Bunun i\u00E7in [\u00DCr\u00FCn olu\u015Fturma](/#operation/createProduct) endpoint\u0027ini kullanmal\u0131s\u0131n\u0131z. Ba\u015Far\u0131l\u0131 bir \u015Fekilde \u00FCr\u00FCn olu\u015Fturulursa size d\u00F6necek olan yan\u0131t ihtiya\u00E7 duyaca\u011F\u0131n\u0131z \u00FCr\u00FCn \u0060id\u0060\u0027sini i\u00E7erir.\n\n##### Mevcut bir \u00FCr\u00FCn ile\n\nE\u011Fer daha \u00F6nceden olu\u015Fturdu\u011Funuz bir \u00FCr\u00FCn\u00FC kullanarak bir irsaliye olu\u015Fturacaksan\u0131z \u00F6ncelikle o \u00FCr\u00FCn\u00FCn \u0060id\u0060\u0027sini \u00F6\u011Frenmeniz gerekir. Bunun i\u00E7in [\u00DCr\u00FCn listesi](/#operation/listProducts) endpoint\u0027ini kullanabilirsiniz. \u00DCr\u00FCn listesi endpoint\u0027i isim, kod gibi \u00E7e\u015Fitli filtreleri destekler. Bunlar\u0131 kullanarak arad\u0131\u011F\u0131n\u0131z \u00FCr\u00FCn\u00FC bulabilirsiniz.\n\n---\n\n\u0130htiya\u00E7 duydu\u011Funuz m\u00FC\u015Fteri/tedarik\u00E7i ve \u00FCr\u00FCn \u0060id\u0060\u0027lerini ald\u0131ktan sonra [\u0130rsaliye Olu\u015Fturma](/#operation/createShipmentDocument) endpoint\u0027i ile irsaliye olu\u015Fturabilirsiniz. Endpoint\u0027in tan\u0131m\u0131nda sa\u011F tarafta bekledi\u011Fimiz veri \u015Fekli bulunmaktad\u0131r, a\u015Fa\u011F\u0131daki bilgileri verinin \u015Fekli ile k\u0131yaslamak daha a\u00E7\u0131klay\u0131c\u0131 olabilir.\n\nDikkat edilecek noktalar:\n* \u0060relationships\u0060 alt\u0131ndaki \u0060contact\u0060\u0027te bulunan \u0060id\u0060 alan\u0131na m\u00FC\u015Fteri/tedarik\u00E7i \u0060id\u0060\u0027sini girmeniz gereklidir.\n* \u0060relationships\u0060 alt\u0131ndaki \u0060stock_movements\u0060 k\u0131sm\u0131 bir listedir (\u0060array\u0060) ve irsaliye kalemlerini temsil eder. Bu listenin her eleman\u0131n\u0131n ili\u015Fkili oldu\u011Fu bir \u00FCr\u00FCn vard\u0131r. Yani \u0060stock_movements\u0060 alt\u0131ndaki her eleman\u0131n kendine ait bir \u0060relationships\u0060 k\u0131sm\u0131 mevcuttur. Buradaki \u0060product\u0060 \u0060id\u0060 alan\u0131 \u00FCstteki \u00FCr\u00FCn ad\u0131mlar\u0131nda elde etti\u011Finiz \u0060id\u0060\u0027yi koyman\u0131z gereken yerdir.\n",
       "baseUrl": "https://api.parasut.com/v4",
@@ -124,12 +83,13 @@
       ]
     },
     {
-      "name": "Invoice API (1.0)",
-      "description": "Web API for managing invoices. (version 1.0)",
+      "name": "\u81FA\u7063\u8B49\u5238\u4EA4\u6613\u6240 OpenAPI",
+      "description": "\u672C\u5E73\u81FA\u63D0\u4F9B\u81FA\u7063\u8B49\u5238\u4EA4\u6613\u6240\u670D\u52D9API\uFF0C\u6B61\u8FCE\u5404\u4F4D\u4ECB\u63A5\u4F7F\u7528\u3002\u003Cbr\u003E\u003Cbr\u003E[\u4F7F\u7528\u689D\u6B3E](https://www.twse.com.tw/zh/page/terms/use.html)",
+      "baseUrl": "https://openapi.twse.com.tw/v1",
       "properties": [
         {
           "type": "X-openapi",
-          "url": "https://invoice.nif.no/swagger/v1/swagger.json"
+          "url": "https://openapi.twse.com.tw/v1/swagger.json"
         }
       ]
     },
@@ -146,36 +106,6 @@
       "contact": [
         {
           "fn": "WAPP GmbH"
-        }
-      ]
-    },
-    {
-      "name": "Switchboard Live Developer API v1.0",
-      "description": "Programmable access to Switchboard Live\u0027s video ingest, transcode and distribution network.",
-      "properties": [
-        {
-          "type": "X-openapi",
-          "url": "https://api.switchboard.live/swagger/1.0/swagger.json"
-        }
-      ]
-    },
-    {
-      "name": "Kartverket.Finnpos.WebAPI",
-      "description": "",
-      "properties": [
-        {
-          "type": "X-openapi",
-          "url": "https://finnposisjon.test.geonorge.no/swagger/v1/swagger.json"
-        }
-      ]
-    },
-    {
-      "name": "XCARD Payment API",
-      "description": "XCARD API is a simple, consolidated API in which transaction can be made between currencies, FIAT and cryptos seamlessly. The system not only allows for easy transactions, by providing one end-point and implementing the logic behind the scenes but also use aggregators to calculate the best possible price for the transaction.\u003Cbr\u003E\u003Cbr\u003EIn order to use the system you are required to have an API key. The API key is associated with an entity (company, merchant) etc as well as specific details such as callback url etc. If you do not have an API key and would like to try our API please contact us in order to set up and account.\u003Cbr\u003E\u003Cbr\u003EWhen you call the following methods /users/registerusers and /users/authenticate; a JWT token is returned. All other methods require a JWT token in order to execute.",
-      "properties": [
-        {
-          "type": "X-openapi",
-          "url": "https://api.mobilum.com/swagger/v1.7.15/swagger.json"
         }
       ]
     },
@@ -218,6 +148,17 @@
       ]
     },
     {
+      "name": "Deutscher Wetterdienst: API",
+      "description": "API des Deutschen Wetterdienstes (DWD) aus der DWD App. \u003Cbr\u003E\u003Cbr\u003E Neben unterschiedlichen Wetterwarnungen (s.u.) lassen sich unter [/dwd.api.proxy.bund.dev/v30/stationOverviewExtended](/dwd.api.proxy.bund.dev/v30/stationOverviewExtended) nach Angabe des Parameters *stationIDs* (z.B. \u0027G005\u0027) auch die Wetterdaten ausgew\u00E4hlter Wetterstationen anfordern (wobei die sog. \u0027Stationskennung\u0027 des DWD anzugeben ist). \u003Cbr\u003E\u003Cbr\u003E Unter [https://opendata.dwd.de/](https://opendata.dwd.de/) bietet der DWD dar\u00FCber hinaus auch aktuelle und historische Daten zu diversen Wetter- und Klimaph\u00E4nomenen zum Download an (vgl. hierzu die offizielle Dokumentation [hier](https://opendata.dwd.de/climate_environment/CDC/Readme_intro_CDC_ftp.pdf)). In diesem Zusammenhang erw\u00E4hnenswert ist auch eine weitere offizielle Liste aller Wetterstationen (ohne Stationskennung aber mit sog. \u0027Stations_id\u0027) [hier](https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/daily/kl/recent/KL_Tageswerte_Beschreibung_Stationen.txt).",
+      "baseUrl": "https://app-prod-ws.warnwetter.de/v30",
+      "properties": [
+        {
+          "type": "X-openapi",
+          "url": "https://dwd.api.bund.dev/openapi.yaml"
+        }
+      ]
+    },
+    {
       "name": "Swagger Generator",
       "description": "This is an online swagger codegen server.  You can find out more at https://github.com/swagger-api/swagger-codegen or on [irc.freenode.net, #swagger](http://swagger.io/irc/).",
       "baseUrl": "https://generator.swagger.io/api",
@@ -234,32 +175,6 @@
       ]
     },
     {
-      "name": "Deutscher Wetterdienst: API",
-      "description": "API des Deutschen Wetterdienstes (DWD) aus der DWD App. \u003Cbr\u003E\u003Cbr\u003E Neben unterschiedlichen Wetterwarnungen (s.u.) lassen sich unter [/dwd.api.proxy.bund.dev/v30/stationOverviewExtended](/dwd.api.proxy.bund.dev/v30/stationOverviewExtended) nach Angabe des Parameters *stationIDs* (z.B. \u0027G005\u0027) auch die Wetterdaten ausgew\u00E4hlter Wetterstationen anfordern (wobei die sog. \u0027Stationskennung\u0027 des DWD anzugeben ist). \u003Cbr\u003E\u003Cbr\u003E Unter [https://opendata.dwd.de/](https://opendata.dwd.de/) bietet der DWD dar\u00FCber hinaus auch aktuelle und historische Daten zu diversen Wetter- und Klimaph\u00E4nomenen zum Download an (vgl. hierzu die offizielle Dokumentation [hier](https://opendata.dwd.de/climate_environment/CDC/Readme_intro_CDC_ftp.pdf)). In diesem Zusammenhang erw\u00E4hnenswert ist auch eine weitere offizielle Liste aller Wetterstationen (ohne Stationskennung aber mit sog. \u0027Stations_id\u0027) [hier](https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/daily/kl/recent/KL_Tageswerte_Beschreibung_Stationen.txt).",
-      "baseUrl": "https://app-prod-ws.warnwetter.de/v30",
-      "properties": [
-        {
-          "type": "X-openapi",
-          "url": "https://dwd.api.bund.dev/openapi.yaml"
-        }
-      ]
-    },
-    {
-      "name": "UEAuth API",
-      "description": "This API provides security tokens that contain authentication and authorization data.",
-      "properties": [
-        {
-          "type": "X-openapi",
-          "url": "https://authtokens.bnsf.com/api/swagger.json"
-        }
-      ],
-      "contact": [
-        {
-          "fn": "Application Security"
-        }
-      ]
-    },
-    {
       "name": "CDN",
       "description": "Welcome to CDN API documentation.\n\nThe API documentation provides requests to manage CDN service and get statistics.\n\n# Introduction\n\nOur API has predictable, resource-oriented URLs and uses HTTP response codes to indicate API errors.\nWe use built-in HTTP features, such as HTTP authentication and HTTP terminology, which can be understood by HTTP clients.\nJSON will be returned in all responses from the API, including errors.\n\n### Responses\n\nThe API uses HTTP response codes to show success or failure of an API request. \nIn general, 2xx codes indicate success, 4xx codes indicate an error that resulted from the provided information \n(e.g. a required parameter is missing or invalid, etc.), and codes in the 5xx range indicate an error connected \nwith our servers.\n\n### Maximum Body Request\n\nMaximum API body request size is 1MB.\n\n### Methods\n\nUse the PATCH method instead of PUT if you need to change one parameter.\n\n### Domain names\n\nIf you are using internationalized domain names (IDNs), they must be\nrepresented in Punycode, which puts the IDN into the character set A-Z and 0-9, to connect with the DNS.\n\n### Deprecated API\n\nAPI evolution causes some endpoints to become deprecated. If you want to monitor deprecated API parts and be\nurgently notified once some API parts become deprecated, you should add deprecation header support in your client application.\nWe [follow this][1] document but use \u0027X-\u0027 prefix for all headers instead, e.g. X-Deprecation, X-Sunset, X-Link etc.\n\n  [1]: https://tools.ietf.org/html/draft-dalal-deprecation-header-02\n\n### HTTP Status Code Summary\n\nCode   | Description\n-------------  | -------------\n2xx | OK \u2014 Request has been completed successfully.\n400 | Bad Request \u2014 Required parameter is missing.\n401 | Unauthorized \u2014 Provided credentials are invalid or your API token has expired.\n403 | Forbidden \u2014 Access denied. You do not have enough rights.\n404 | Not Found \u2014 Requested item doesn\u0027t exist.\n429 | Too Many Requests \u2014 You have exceeded the number of allowed requests for your resources.\n503 | Service Unavailable \u2014 You have made a mistake in request parameters or the service is currently unavailable.\n500 502 504 | Server errors \u2014 Something went wrong on our end.\n\n# Rate limits\n\nThere is a general limit of 4 requests per second. If you go over the rate limit, you will receive a message.\n\n### Prefetch Calls Limiting\n\nYou can make 1 prefetch request for a resource per minute. One prefetch request is limited to 100 patterns.\nIf you go over the rate limit, you will receive a message.\n\n### Purge Calls Limiting\n\nYou can make 1 purge request for a resource per minute. One purge request is limited to 10 patterns.\nIf you go over the rate limit, you will receive a message.\n",
       "baseUrl": "https://api.___serverhost___/",
@@ -271,17 +186,6 @@
       ]
     },
     {
-      "name": "PCI Vault API",
-      "description": "[PCIVault.io](https://pcivault.io) is a vendor neutral PCI DSS compliant environment provided by [SnapBill, Inc](https://www.snapbill.com). \u003Cbr /\u003E\n\n  It is a SaaS solution offering Tokenization as a Service (TaaS) combined with its own Entropy as a Service (EaaS) engine for lightning quick enterprise grade encryption.  Leveraging the Standard Unix Password Manager and PGP, this PCI vault is open for use by anyone requiring a secure PCI compliant environment to store sensitive payment data in any format. \u003Cbr /\u003E\n\n  [Sign up for an account \u0026rarr;](https://pcivault.io/register) \u003Cbr /\u003E\n\n  View our PCI DSS [Attestation of Compliance (AOC)](https://pci-certificates.s3.eu-west-1.amazonaws.com/PCI-DSS-v3_2_1-AOC-ServiceProviders-PCIVault.pdf) and [Executive Scan Summary (ESS)](https://pci-certificates.s3.eu-west-1.amazonaws.com/PCI-ASV-ExecutiveReport-PCIVault.pdf).\n\n  ### Instructions:\n\n   - \u003Cstrong\u003EStep 1:\u003C/strong\u003E [Add a new key](/#/Keys) (you need at least one key)\n\n   - \u003Cstrong\u003EStep 2:\u003C/strong\u003E [Encrypt, tokenize and store data securely](#/Vault) (with your key)",
-      "baseUrl": "https://api.pcivault.io/v1",
-      "properties": [
-        {
-          "type": "X-openapi",
-          "url": "https://api.pcivault.io/openapi.json"
-        }
-      ]
-    },
-    {
       "name": "Anketa.WebApi",
       "description": "",
       "baseUrl": "https://localhost:25790/",
@@ -289,6 +193,17 @@
         {
           "type": "X-openapi",
           "url": "https://aitah.maxima.ee/js/swagger.json"
+        }
+      ]
+    },
+    {
+      "name": "PCI Vault API",
+      "description": "[PCIVault.io](https://pcivault.io) is a vendor neutral PCI DSS compliant environment provided by [SnapBill, Inc](https://www.snapbill.com). \u003Cbr /\u003E\n\n  It is a SaaS solution offering Tokenization as a Service (TaaS) combined with its own Entropy as a Service (EaaS) engine for lightning quick enterprise grade encryption.  Leveraging the Standard Unix Password Manager and PGP, this PCI vault is open for use by anyone requiring a secure PCI compliant environment to store sensitive payment data in any format. \u003Cbr /\u003E\n\n  [Sign up for an account \u0026rarr;](https://pcivault.io/register) \u003Cbr /\u003E\n\n  View our PCI DSS [Attestation of Compliance (AOC)](https://pci-certificates.s3.eu-west-1.amazonaws.com/PCI-DSS-v3_2_1-AOC-ServiceProviders-PCIVault.pdf) and [Executive Scan Summary (ESS)](https://pci-certificates.s3.eu-west-1.amazonaws.com/PCI-ASV-ExecutiveReport-PCIVault.pdf).\n\n  ### Instructions:\n\n   - \u003Cstrong\u003EStep 1:\u003C/strong\u003E [Add a new key](/#/Keys) (you need at least one key)\n\n   - \u003Cstrong\u003EStep 2:\u003C/strong\u003E [Encrypt, tokenize and store data securely](#/Vault) (with your key)",
+      "baseUrl": "https://api.pcivault.io/v1",
+      "properties": [
+        {
+          "type": "X-openapi",
+          "url": "https://api.pcivault.io/openapi.json"
         }
       ]
     },
@@ -315,16 +230,6 @@
       ]
     },
     {
-      "name": "CADLearning API 1.0",
-      "description": "Complete API Documentation.\u003Cbr/\u003EPlease note all results are returned in an Generic BaseResponse of type:\u003Cbr/\u003E { Errors: ResponseError[], Results: T | T[], TotalCount: number}. Because of limitations to swagger it will not report this appropriately.",
-      "properties": [
-        {
-          "type": "X-openapi",
-          "url": "https://api.cadlearning.com/help/v1/swagger.json"
-        }
-      ]
-    },
-    {
       "name": "Swagger Converter",
       "description": "Converts a 1.x or 2.x Swagger definition to the OpenAPI 3.0.1 format",
       "baseUrl": "https://converter.swagger.io/api/",
@@ -332,6 +237,17 @@
         {
           "type": "X-openapi",
           "url": "https://converter.swagger.io/api/openapi.json"
+        }
+      ]
+    },
+    {
+      "name": "Image-Charts",
+      "description": "Charts, simple as a URL. A safe and fast replacement for Google Image Charts",
+      "baseUrl": "https://image-charts.com/",
+      "properties": [
+        {
+          "type": "X-openapi",
+          "url": "https://image-charts.com/swagger.json"
         }
       ]
     },
@@ -359,42 +275,6 @@
       "contact": [
         {
           "fn": "Jokes One"
-        }
-      ]
-    },
-    {
-      "name": "Authentication API",
-      "description": "",
-      "properties": [
-        {
-          "type": "X-openapi",
-          "url": "https://authentication.secretview.io/swagger/v1/swagger.json"
-        }
-      ],
-      "contact": [
-        {
-          "fn": "Tom Droste"
-        }
-      ]
-    },
-    {
-      "name": "AuthTokenService",
-      "description": "\nAPI som g\u0026ouml;r det m\u0026ouml;jligt att autentisera anv\u0026auml;ndare med BankID. Nedan beskrivna API-metoder anropas\nf\u0026ouml;r att genomf\u0026ouml;ra en inloggning och sedan h\u0026auml;mtas en JWT som kan anv\u0026auml;ndas av anropande system\nf\u0026ouml;r att autentisera anv\u0026auml;ndaren.\n\n---\n\n## Single-Sign-On i en SPA\n\nP\u0026aring; f\u0026ouml;ljande s\u0026auml;tt g\u0026aring;r man tillv\u0026auml;ga f\u0026ouml;r att anv\u0026auml;nda SSO-tj\u0026auml;nsten till autentisering i en applikation.\n\n**1.** Registrera klient-id, secret och en lista med redirect_uris (detta har idag inget gr\u0026auml;nssnitt, m\u0026aring;ste g\u0026ouml;ras via StartUp.cs i den h\u0026auml;r AuthTokenService-applikationen, se seedningen).\nMan beh\u0026ouml;ver ocks\u0026aring; registerera \u0022scope\u0022 f\u0026ouml;r klienten. Om klienten v\u0026auml;nder sig mot medborgare ska scope s\u0026auml;ttas till \u0060public\u0060. Ska applikationen ist\u0026auml;llet anv\u0026auml;ndas av personal\np\u0026aring; ume\u0026aring; kommun beh\u0026ouml;ver man ange ett nytt admin-scope (l\u0026auml;s om det l\u0026auml;ngre ner).\n\n**2.** N\u0026auml;r klienten vill logga in anv\u0026auml;ndaren ska webbl\u0026auml;saren omdirigeras till f\u0026ouml;ljande adress:\n\nGET \u0060https://[END-POINT]/connect/authorize?client_id=[CLIENT_ID]\u0026scope=[SCOPE]\u002Boffline_access\u0026response_type=code\u0026redirect_uri=[REDIRECT_URI]\u0026state=[STATE]\u0060\n\n**3.** Efter att anv\u0026auml;ndaren loggat in i SSO-tj\u0026auml;nsten omdirigeras webbl\u0026auml;saren till ovan angivna \u0060redirectUri\u0060 med parametrarna \u0060code\u0060 och  \u0060state\u0060 i adressen. \nValidera v\u0026auml;rdet i state-parametern (l\u0026auml;s mer ang\u0026aring;ende state och oauth) och h\u0026auml;mta d\u0026auml;refter autentiseringsnyckeln genom f\u0026ouml;ljande anrop:\n\n\u0060\u0060\u0060js\nconst data = new FormData();\ndata.append(\u0027client_id\u0027, config.clientId);\ndata.append(\u0027client_secret\u0027, \u0027nosecret\u0027);\ndata.append(\u0027grant_type\u0027, \u0027authorization_code\u0027);\ndata.append(\u0027redirect_uri\u0027, config.redirectUrl);\ndata.append(\u0027code\u0027, code);\n\nresponse = await Axios.post(config.fetchTokenApiUrl, data, {\n    headers: {\n        \u0027Content-Type\u0027: \u0027application/x-www-form-urlencoded\u0027\n    }\n});\n\u0060\u0060\u0060\n\n**4.** Spara autentiseringsnyckeln med localStorage eller i en kaka. F\u0026ouml;r att verifiera nyckeln kan man anv\u0026auml;nda \u0060JWKS\u0060 som exponeras\ngenom att anropa \u0060https://[END-POINT]/.well-known/openid-configuration\u0060. \u0026Auml;r applikationen en .net-app kan man installera nuget-paketet IdentityServer och anv\u0026auml;nda \u0060services.AddIdentityServerAuthentication()\u0060.\n\n\n### Automatisk inloggning av anv\u0026auml;ndare i en SPA\n\nAnv\u0026auml;ndaren kan befinna sig i ett scenario d\u0026auml;r man \u0026auml;r inloggad centralt men inte appen som man bes\u0026ouml;kt. F\u0026ouml;r att l\u0026ouml;sa detta kan man ladda adressen\n[/LoginStatusJsCommunicator](/LoginStatusJsCommunicator) i en iframe. Den sidan kommer d\u0026aring; att posta ett meddelande till moder-sidan (appen) med information om vilka scope \nden inloggade anv\u0026auml;ndaren har. Se k\u0026auml;llkoden f\u0026ouml;r information om hur meddelandet ser ut, man kan \u0026auml;ven se ett exempel p\u0026aring; implementation \ni metoden \u0060tryToReLoginUserIfSupported\u0060 (Oauth.ts) i BasicUse-appen.\n\n### V\u0026auml;rt att t\u0026auml;nka p\u0026aring;: \n\n- En vanlig webbplats kan med f\u0026ouml;rdel anv\u0026auml;nda sig av openid-protokollet ist\u0026auml;llet f\u0026ouml;r authorization_code-fl\u0026ouml;det som \u0026auml;r beskrivet ovan.\n- Autentiseringsnyckeln \u0026auml;r en jwt som inneh\u0026aring;ller information om anv\u0026auml;ndaren.\n- Autentiseringsnyckeln lever i 10-12 timmar, det \u0026auml;r upp till applikationen att hantera automatisk utloggning vid inaktivitet fr\u0026aring;n anv\u0026auml;ndarens sida.\n- Kombinera **inte** scope admin: och public. Om man g\u0026ouml;r det skulle \u0022vem som helst\u0022 kunna h4x4 sig in till admin-tj\u0026auml;nsten genom att logga in med BankID\n- \u0026Auml;r applikationen en SPA-webbsida s\u0026aring; har \u0060client_secret\u0060 inget syfte och kan s\u0026auml;ttas till t.ex. \u0060no_secret\u0060 f\u0026ouml;r att tydligg\u0026ouml;ra detta. D\u0026auml;remot kan \nvi i dagsl\u0026auml;get inte ta bort den fr\u0026aring;n anropet d\u0026aring; IdentityServer kr\u0026auml;ver den.\n\n---\n\n## L\u0026auml;gga till ny app f\u0026ouml;r intern personal (active directory)\n\n1. Registrera app i Azure. \n2. Skapa ett nytt scope i sso-tj\u0026auml;nsten \u0022admin:ett-namn-pa-tjansten\u0022. (se seedningen i OauthConfiguration.cs) \n3. Skapa en klient, enligt beskrivning ovan, i SSO-appen genom seedning.\n4. Styr personalens beh\u0026ouml;righet till appen i Azure.\n5. L\u0026auml;gg in kod i appen som redirectar till SSO-tj\u0026auml;nsten f\u0026ouml;r inloggning (enligt beskrivning ovan). Man kan \u0026auml;ven anv\u0026auml;nda sig av openid-konfurationen \u0060https://[END-POINT]/.well-known/openid-configuration\u0060\n\n## L\u0026auml;gga ett API, p\u0026aring; v\u0026aring;r plattform, bakom inloggning\n\nMessageDispatcherService inneh\u0026aring;ller exempel p\u0026aring; hur man g\u0026ouml;r detta. \n\n1. I filen \u0060Startup.cs\u0060 anropar vi \u0060mvc.AddSsoAuthentication(services, TOKEN_SERVICE_ADDRESS);\u0060 i metoden \u0060ConfigureServices\u0060\n2. I filen \u0060Startup.cs\u0060 l\u0026auml;gger vi till \u0060app.UseAuthentication()\u0060 i metoden \u0060Configure\u0060\n3. P\u0026aring; en kontroller l\u0026auml;gger vi p\u0026aring; attributet [Authorize(Scope.XYZ)]. \n\nDessa hj\u0026auml;lpmetoder ligger i Utilities-projektet.\n",
-      "properties": [
-        {
-          "type": "X-openapi",
-          "url": "https://authtoken.umea.se/swagger/v1.0/swagger.json"
-        }
-      ]
-    },
-    {
-      "name": "Image-Charts",
-      "description": "Charts, simple as a URL. A safe and fast replacement for Google Image Charts",
-      "baseUrl": "https://image-charts.com/",
-      "properties": [
-        {
-          "type": "X-openapi",
-          "url": "https://image-charts.com/swagger.json"
         }
       ]
     },
@@ -449,16 +329,6 @@
         {
           "type": "X-openapi",
           "url": "https://hanlintest.ehanlin.com.tw/hanlintest-api/swagger/v1/swagger.json"
-        }
-      ]
-    },
-    {
-      "name": "FastAPI",
-      "description": "",
-      "properties": [
-        {
-          "type": "X-openapi",
-          "url": "https://api.masai-one.masaischool.com/openapi.json"
         }
       ]
     },
@@ -518,12 +388,13 @@
       ]
     },
     {
-      "name": "FakeRESTApi.Web V1",
+      "name": "Anketa.WebApi",
       "description": "",
+      "baseUrl": "https://localhost:25789/",
       "properties": [
         {
           "type": "X-openapi",
-          "url": "https://fakerestapi.azurewebsites.net/swagger/v1/swagger.json"
+          "url": "https://aciu.maxima.lt/js/swagger.json?v=1.1.57-13"
         }
       ]
     },
@@ -544,13 +415,13 @@
       ]
     },
     {
-      "name": "Anketa.WebApi",
+      "name": "Calvert API",
       "description": "",
-      "baseUrl": "https://localhost:25789/",
+      "baseUrl": "https://api.calvertlearning.com/prod/v2",
       "properties": [
         {
           "type": "X-openapi",
-          "url": "https://aciu.maxima.lt/js/swagger.json?v=1.1.57-13"
+          "url": "https://api.calvertlearning.com/prod/v2/swagger.json"
         }
       ]
     },
@@ -567,17 +438,6 @@
       "contact": [
         {
           "fn": "They Said So"
-        }
-      ]
-    },
-    {
-      "name": "Calvert API",
-      "description": "",
-      "baseUrl": "https://api.calvertlearning.com/prod/v2",
-      "properties": [
-        {
-          "type": "X-openapi",
-          "url": "https://api.calvertlearning.com/prod/v2/swagger.json"
         }
       ]
     },
@@ -616,21 +476,6 @@
       "contact": [
         {
           "fn": "support@reepay.com"
-        }
-      ]
-    },
-    {
-      "name": "Memegen.link",
-      "description": "\n## Quickstart\n\nFetch the list of templates:\n\n\u0060\u0060\u0060\n$ http GET https://api.memegen.link/templates\n\n[\n    {\n        \u0022id\u0022: \u0022aag\u0022,\n        \u0022name\u0022: \u0022Ancient Aliens Guy\u0022,\n        \u0022lines\u0022: 2,\n        \u0022overlays\u0022: 0,\n        \u0022styles\u0022: [],\n        \u0022blank\u0022: \u0022https://api.memegen.link/images/aag.png\u0022,\n        \u0022example\u0022: {\n            \u0022text\u0022: [\n                \u0022\u0022,\n                \u0022aliens\u0022\n            ],\n            \u0022url\u0022: \u0022https://api.memegen.link/images/aag/_/aliens.png\u0022\n        },\n        \u0022source\u0022: \u0022http://knowyourmeme.com/memes/ancient-aliens\u0022,\n    },\n    ...\n]\n\u0060\u0060\u0060\n\nAdd text to create a meme:\n\n\u0060\u0060\u0060\n$ http POST https://api.memegen.link/images template_id=aag \u0022text[]=foo\u0022 \u0022text[]=bar\u0022\n\n{\n    \u0022url\u0022: \u0022https://api.memegen.link/images/aag/foo/bar.png\u0022\n}\n\u0060\u0060\u0060\n\nView the image: \u003Chttps://api.memegen.link/images/aag/foo/bar.png\u003E\n\n## Links\n",
-      "properties": [
-        {
-          "type": "X-openapi",
-          "url": "https://api.memegen.link/docs/openapi.json"
-        }
-      ],
-      "contact": [
-        {
-          "fn": "support"
         }
       ]
     },
