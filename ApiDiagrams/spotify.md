@@ -1,0 +1,155 @@
+# Spotify Web API
+
+OpenAPI: https://api.apis.guru/v2/specs/spotify.com/2021.8.15/openapi.yaml
+<div>
+<span style="padding:2px;background-color:lightSteelBlue">GET</span>
+<span style="padding:2px;background-color:SteelBlue">POST</span>
+<span style="padding:2px;background-color:forestGreen">GET POST</span>
+<span style="padding:2px;background-color:yellowGreen">GET PATCH DELETE</span>
+<span style="padding:2px;background-color:olive">GET PUT DELETE</span>
+<span style="padding:2px;background-color:darkseagreen">GET DELETE</span>
+<span style="padding:2px;background-color:tomato">DELETE</span>
+</div>
+
+```mermaid
+graph LR
+classDef GET fill:lightSteelBlue,stroke:#333,stroke-width:2px;
+classDef POST fill:SteelBlue,stroke:#333,stroke-width:2px;
+classDef GETPOST fill:forestGreen,stroke:#333,stroke-width:2px;
+classDef DELETEGETPATCH fill:yellowGreen,stroke:#333,stroke-width:2px;
+classDef DELETEGETPUT fill:olive,stroke:#333,stroke-width:2px;
+classDef DELETEGET fill:DarkSeaGreen,stroke:#333,stroke-width:2px;
+classDef DELETE fill:tomato,stroke:#333,stroke-width:2px;
+classDef OTHER fill:white,stroke:#333,stroke-width:2px;
+/ --> /albums[albums]
+/albums --> /albums/:id[:id]
+/albums/:id --> /albums/:id/tracks[tracks]
+class /albums/:id/tracks GET
+class /albums/:id GET
+class /albums GET
+/ --> /artists[artists]
+/artists --> /artists/:id[:id]
+/artists/:id --> /artists/:id/albums[albums]
+class /artists/:id/albums GET
+/artists/:id --> /artists/:id/related-artists[related-artists]
+class /artists/:id/related-artists GET
+/artists/:id --> /artists/:id/top-tracks[top-tracks]
+class /artists/:id/top-tracks GET
+class /artists/:id GET
+class /artists GET
+/ --> /audio-analysis[audio-analysis]
+/audio-analysis --> /audio-analysis/:id[:id]
+class /audio-analysis/:id GET
+class /audio-analysis OTHER
+/ --> /audio-features[audio-features]
+/audio-features --> /audio-features/:id[:id]
+class /audio-features/:id GET
+class /audio-features GET
+/ --> /browse[browse]
+/browse --> /browse/categories[categories]
+/browse/categories --> /browse/categories/:category_id[:category_id]
+/browse/categories/:category_id --> /browse/categories/:category_id/playlists[playlists]
+class /browse/categories/:category_id/playlists GET
+class /browse/categories/:category_id GET
+class /browse/categories GET
+/browse --> /browse/featured-playlists[featured-playlists]
+class /browse/featured-playlists GET
+/browse --> /browse/new-releases[new-releases]
+class /browse/new-releases GET
+class /browse OTHER
+/ --> /episodes[episodes]
+/episodes --> /episodes/:id[:id]
+class /episodes/:id GET
+class /episodes GET
+/ --> /markets[markets]
+class /markets GET
+/ --> /me[me]
+/me --> /me/albums[albums]
+/me/albums --> /me/albums/contains[contains]
+class /me/albums/contains GET
+class /me/albums DELETEGETPUT
+/me --> /me/episodes[episodes]
+/me/episodes --> /me/episodes/contains[contains]
+class /me/episodes/contains GET
+class /me/episodes DELETEGETPUT
+/me --> /me/following[following]
+/me/following --> /me/following/contains[contains]
+class /me/following/contains GET
+class /me/following DELETEGETPUT
+/me --> /me/player[player]
+/me/player --> /me/player/currently-playing[currently-playing]
+class /me/player/currently-playing GET
+/me/player --> /me/player/devices[devices]
+class /me/player/devices GET
+/me/player --> /me/player/next[next]
+class /me/player/next POST
+/me/player --> /me/player/pause[pause]
+class /me/player/pause PUT
+/me/player --> /me/player/play[play]
+class /me/player/play PUT
+/me/player --> /me/player/previous[previous]
+class /me/player/previous POST
+/me/player --> /me/player/queue[queue]
+class /me/player/queue POST
+/me/player --> /me/player/recently-played[recently-played]
+class /me/player/recently-played GET
+/me/player --> /me/player/repeat[repeat]
+class /me/player/repeat PUT
+/me/player --> /me/player/seek[seek]
+class /me/player/seek PUT
+/me/player --> /me/player/shuffle[shuffle]
+class /me/player/shuffle PUT
+/me/player --> /me/player/volume[volume]
+class /me/player/volume PUT
+class /me/player GETPUT
+/me --> /me/playlists[playlists]
+class /me/playlists GET
+/me --> /me/shows[shows]
+/me/shows --> /me/shows/contains[contains]
+class /me/shows/contains GET
+class /me/shows DELETEGETPUT
+/me --> /me/top[top]
+/me/top --> /me/top/:type[:type]
+class /me/top/:type GET
+class /me/top OTHER
+/me --> /me/tracks[tracks]
+/me/tracks --> /me/tracks/contains[contains]
+class /me/tracks/contains GET
+class /me/tracks DELETEGETPUT
+class /me GET
+/ --> /playlists[playlists]
+/playlists --> /playlists/:playlist_id[:playlist_id]
+/playlists/:playlist_id --> /playlists/:playlist_id/followers[followers]
+/playlists/:playlist_id/followers --> /playlists/:playlist_id/followers/contains[contains]
+class /playlists/:playlist_id/followers/contains GET
+class /playlists/:playlist_id/followers DELETEPUT
+/playlists/:playlist_id --> /playlists/:playlist_id/images[images]
+class /playlists/:playlist_id/images GETPUT
+/playlists/:playlist_id --> /playlists/:playlist_id/tracks[tracks]
+class /playlists/:playlist_id/tracks DELETEGETPOSTPUT
+class /playlists/:playlist_id GETPUT
+class /playlists OTHER
+/ --> /recommendations[recommendations]
+/recommendations --> /recommendations/available-genre-seeds[available-genre-seeds]
+class /recommendations/available-genre-seeds GET
+class /recommendations GET
+/ --> /search[search]
+class /search GET
+/ --> /shows[shows]
+/shows --> /shows/:id[:id]
+/shows/:id --> /shows/:id/episodes[episodes]
+class /shows/:id/episodes GET
+class /shows/:id GET
+class /shows GET
+/ --> /tracks[tracks]
+/tracks --> /tracks/:id[:id]
+class /tracks/:id GET
+class /tracks GET
+/ --> /users[users]
+/users --> /users/:user_id[:user_id]
+/users/:user_id --> /users/:user_id/playlists[playlists]
+class /users/:user_id/playlists GETPOST
+class /users/:user_id GET
+class /users OTHER
+class / OTHER
+```

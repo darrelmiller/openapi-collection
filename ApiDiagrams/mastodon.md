@@ -1,0 +1,153 @@
+# Mastodon
+
+OpenAPI: ..\..\..\..\APIPatterns\Moostodon\spec\cadl-output\openapi.json
+<div>
+<span style="padding:2px;background-color:lightSteelBlue">GET</span>
+<span style="padding:2px;background-color:SteelBlue">POST</span>
+<span style="padding:2px;background-color:forestGreen">GET POST</span>
+<span style="padding:2px;background-color:yellowGreen">GET PATCH DELETE</span>
+<span style="padding:2px;background-color:olive">GET PUT DELETE</span>
+<span style="padding:2px;background-color:darkseagreen">GET DELETE</span>
+<span style="padding:2px;background-color:tomato">DELETE</span>
+</div>
+
+```mermaid
+graph LR
+classDef GET fill:lightSteelBlue,stroke:#333,stroke-width:2px;
+classDef POST fill:SteelBlue,stroke:#333,stroke-width:2px;
+classDef GETPOST fill:forestGreen,stroke:#333,stroke-width:2px;
+classDef DELETEGETPATCH fill:yellowGreen,stroke:#333,stroke-width:2px;
+classDef DELETEGETPUT fill:olive,stroke:#333,stroke-width:2px;
+classDef DELETEGET fill:DarkSeaGreen,stroke:#333,stroke-width:2px;
+classDef DELETE fill:tomato,stroke:#333,stroke-width:2px;
+classDef OTHER fill:white,stroke:#333,stroke-width:2px;
+/ --> /api[api]
+/api --> /api/v1[v1]
+/api/v1 --> /api/v1/apps[apps]
+/api/v1/apps --> /api/v1/apps/verify_credentials[verify_credentials]
+class /api/v1/apps/verify_credentials GET
+class /api/v1/apps POST
+/api/v1 --> /api/v1/accounts[accounts]
+/api/v1/accounts --> /api/v1/accounts/verify_credentials[verify_credentials]
+class /api/v1/accounts/verify_credentials GET
+/api/v1/accounts --> /api/v1/accounts/update_credentials[update_credentials]
+class /api/v1/accounts/update_credentials PATCH
+/api/v1/accounts --> /api/v1/accounts/search[search]
+class /api/v1/accounts/search GET
+/api/v1/accounts --> /api/v1/accounts/lookup[lookup]
+class /api/v1/accounts/lookup GET
+/api/v1/accounts --> /api/v1/accounts/relationships[relationships]
+class /api/v1/accounts/relationships GET
+/api/v1/accounts --> /api/v1/accounts/familiar_followers[familiar_followers]
+class /api/v1/accounts/familiar_followers GET
+/api/v1/accounts --> /api/v1/accounts/:id[:id]
+/api/v1/accounts/:id --> /api/v1/accounts/:id/statuses[statuses]
+class /api/v1/accounts/:id/statuses GET
+/api/v1/accounts/:id --> /api/v1/accounts/:id/followers[followers]
+class /api/v1/accounts/:id/followers GET
+/api/v1/accounts/:id --> /api/v1/accounts/:id/following[following]
+class /api/v1/accounts/:id/following GET
+/api/v1/accounts/:id --> /api/v1/accounts/:id/featured_tags[featured_tags]
+class /api/v1/accounts/:id/featured_tags GET
+/api/v1/accounts/:id --> /api/v1/accounts/:id/lists[lists]
+class /api/v1/accounts/:id/lists GET
+/api/v1/accounts/:id --> /api/v1/accounts/:id/follow[follow]
+class /api/v1/accounts/:id/follow POST
+/api/v1/accounts/:id --> /api/v1/accounts/:id/unfollow[unfollow]
+class /api/v1/accounts/:id/unfollow POST
+/api/v1/accounts/:id --> /api/v1/accounts/:id/remove_from_followers[remove_from_followers]
+class /api/v1/accounts/:id/remove_from_followers POST
+/api/v1/accounts/:id --> /api/v1/accounts/:id/block[block]
+class /api/v1/accounts/:id/block POST
+/api/v1/accounts/:id --> /api/v1/accounts/:id/unblock[unblock]
+class /api/v1/accounts/:id/unblock POST
+/api/v1/accounts/:id --> /api/v1/accounts/:id/mute[mute]
+class /api/v1/accounts/:id/mute POST
+/api/v1/accounts/:id --> /api/v1/accounts/:id/unmute[unmute]
+class /api/v1/accounts/:id/unmute POST
+/api/v1/accounts/:id --> /api/v1/accounts/:id/pin[pin]
+class /api/v1/accounts/:id/pin POST
+/api/v1/accounts/:id --> /api/v1/accounts/:id/unpin[unpin]
+class /api/v1/accounts/:id/unpin POST
+/api/v1/accounts/:id --> /api/v1/accounts/:id/note[note]
+class /api/v1/accounts/:id/note POST
+class /api/v1/accounts/:id GETPATCH
+class /api/v1/accounts POST
+/api/v1 --> /api/v1/bookmarks[bookmarks]
+class /api/v1/bookmarks GET
+/api/v1 --> /api/v1/favourites[favourites]
+class /api/v1/favourites GET
+/api/v1 --> /api/v1/mutes[mutes]
+class /api/v1/mutes GET
+/api/v1 --> /api/v1/blocks[blocks]
+class /api/v1/blocks GET
+/api/v1 --> /api/v1/endorsements[endorsements]
+class /api/v1/endorsements GET
+/api/v1 --> /api/v1/timelines[timelines]
+/api/v1/timelines --> /api/v1/timelines/public[public]
+class /api/v1/timelines/public GET
+/api/v1/timelines --> /api/v1/timelines/home[home]
+class /api/v1/timelines/home GET
+/api/v1/timelines --> /api/v1/timelines/tag[tag]
+/api/v1/timelines/tag --> /api/v1/timelines/tag/:tag[:tag]
+class /api/v1/timelines/tag/:tag GET
+class /api/v1/timelines/tag OTHER
+/api/v1/timelines --> /api/v1/timelines/list[list]
+/api/v1/timelines/list --> /api/v1/timelines/list/:id[:id]
+class /api/v1/timelines/list/:id GET
+class /api/v1/timelines/list OTHER
+class /api/v1/timelines OTHER
+/api/v1 --> /api/v1/statuses[statuses]
+/api/v1/statuses --> /api/v1/statuses/:id[:id]
+/api/v1/statuses/:id --> /api/v1/statuses/:id/context[context]
+class /api/v1/statuses/:id/context GET
+/api/v1/statuses/:id --> /api/v1/statuses/:id/reblogged_by[reblogged_by]
+class /api/v1/statuses/:id/reblogged_by GET
+/api/v1/statuses/:id --> /api/v1/statuses/:id/favourited_by[favourited_by]
+class /api/v1/statuses/:id/favourited_by GET
+/api/v1/statuses/:id --> /api/v1/statuses/:id/favourite[favourite]
+class /api/v1/statuses/:id/favourite POST
+/api/v1/statuses/:id --> /api/v1/statuses/:id/unfavourite[unfavourite]
+class /api/v1/statuses/:id/unfavourite POST
+/api/v1/statuses/:id --> /api/v1/statuses/:id/reblog[reblog]
+class /api/v1/statuses/:id/reblog POST
+/api/v1/statuses/:id --> /api/v1/statuses/:id/unreblog[unreblog]
+class /api/v1/statuses/:id/unreblog POST
+/api/v1/statuses/:id --> /api/v1/statuses/:id/bookmark[bookmark]
+class /api/v1/statuses/:id/bookmark POST
+/api/v1/statuses/:id --> /api/v1/statuses/:id/unbookmark[unbookmark]
+class /api/v1/statuses/:id/unbookmark POST
+/api/v1/statuses/:id --> /api/v1/statuses/:id/mute[mute]
+class /api/v1/statuses/:id/mute POST
+/api/v1/statuses/:id --> /api/v1/statuses/:id/unmute[unmute]
+class /api/v1/statuses/:id/unmute POST
+/api/v1/statuses/:id --> /api/v1/statuses/:id/pin[pin]
+class /api/v1/statuses/:id/pin POST
+/api/v1/statuses/:id --> /api/v1/statuses/:id/unpin[unpin]
+class /api/v1/statuses/:id/unpin POST
+/api/v1/statuses/:id --> /api/v1/statuses/:id/history[history]
+class /api/v1/statuses/:id/history GET
+/api/v1/statuses/:id --> /api/v1/statuses/:id/source[source]
+class /api/v1/statuses/:id/source GET
+class /api/v1/statuses/:id DELETEGETPUT
+class /api/v1/statuses POST
+/api/v1 --> /api/v1/instance[instance]
+class /api/v1/instance GET
+/api/v1 --> /api/v1/domain_blocks[domain_blocks]
+class /api/v1/domain_blocks DELETEGETPOST
+class /api/v1 OTHER
+/api --> /api/v2[v2]
+/api/v2 --> /api/v2/search[search]
+class /api/v2/search GET
+class /api/v2 OTHER
+class /api OTHER
+/ --> /oauth[oauth]
+/oauth --> /oauth/authorize[authorize]
+class /oauth/authorize GET
+/oauth --> /oauth/token[token]
+class /oauth/token POST
+/oauth --> /oauth/revoke[revoke]
+class /oauth/revoke POST
+class /oauth OTHER
+class / OTHER
+```
