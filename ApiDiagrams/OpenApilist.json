@@ -1,0 +1,68 @@
+[
+    {
+        "name": "Plaid",
+        "url": "https://api.apis.guru/v2/specs/plaid.com/2020-09-14_1.20.6/openapi.json"
+    },
+    {
+        "name": "Spotify",
+        "url": "https://api.apis.guru/v2/specs/spotify.com/2021.8.15/openapi.yaml"
+    },
+    {
+        "name": "OpenAI",
+        "url": "https://raw.githubusercontent.com/openai/openai-openapi/master/openapi.yaml"
+    },
+    {
+        "name": "Notion",
+        "url": "https://api.apis.guru/v2/specs/notion.com/1.0.0/openapi.yaml"
+    },
+    {
+        "name": "LUIS Authoring",
+        "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/cognitiveservices/data-plane/LUIS/Authoring/stable/v3.0/LUIS-Authoring.json"
+    },
+    {
+        "name": "LUIS Runtime",
+        "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/cognitiveservices/data-plane/LUIS/Runtime/stable/v3.0/LUIS-Runtime.json"
+    },
+    {
+        "name": "Jokes.one",
+        "url": "https://api.jokes.one/yaml/jokes.one.openapi.yaml?v9"
+    },
+    {
+        "name": "Web Search",
+        "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/cognitiveservices/data-plane/WebSearch/stable/v1.0/WebSearch.json"
+    },
+    {
+        "name": "Azure OpenAI",
+        "url": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/cognitiveservices/data-plane/AzureOpenAI/authoring/stable/2022-12-01/azureopenai.json"
+    },
+    {
+        "name": "Azure Key Vault",
+        "url": "https://api.apis.guru/v2/specs/azure.com/keyvault/7.0-preview/swagger.yaml"
+    },
+    {
+        "name": "Petstore",
+        "url": "https://petstore.swagger.io/v2/swagger.json"
+    },
+    {
+        "name": "AEM",
+        "url": "https://api.apis.guru/v2/specs/adobe.com/aem/3.5.0-pre.0/openapi.yaml"
+    },
+    {
+        "name": "Twilio",
+        "url": "https://api.apis.guru/v2/specs/twilio.com/api/1.38.0/openapi.json"
+    },
+    {
+        "name": "GitHub",
+        "url": "https://raw.githubusercontent.com/github/rest-api-description/main/descriptions/api.github.com/api.github.com.yaml"
+    },
+    {
+        "name": "getsentry",
+        "url": "https://raw.githubusercontent.com/getsentry/sentry/master/api-docs/openapi.json"
+    },
+    {
+        "name": "Kubernetes",
+        "url": "https://raw.githubusercontent.com/kubernetes/kubernetes/master/api/openapi-spec/v3/api__v1_openapi.json"
+    }
+
+
+]

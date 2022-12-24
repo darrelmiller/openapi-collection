@@ -1,6 +1,6 @@
-# Swagger Petstore
+# Jokes One API
 
-OpenAPI: https://petstore.swagger.io/v2/swagger.json
+OpenAPI: https://api.jokes.one/yaml/jokes.one.openapi.yaml?v9
 <div>
 <span style="padding:2px;background-color:lightSteelBlue;border: 2px solid">GET</span>
 <span style="padding:2px;background-color:Lightcoral;border: 2px solid">POST</span>
@@ -24,35 +24,27 @@ classDef DELETE_GET_PUT fill:olive,stroke:#333,stroke-width:2px
 classDef DELETE_GET fill:DarkSeaGreen,stroke:#333,stroke-width:2px
 classDef DELETE fill:Tomato,stroke:#333,stroke-width:2px
 classDef OTHER fill:White,stroke:#333,stroke-width:2px
-/["/"] --> /pet["pet"]
-/pet["pet"] --> /pet/:petId["{petId}"]
-/pet/:petId["{petId}"] --> /pet/:petId/uploadImage>"uploadImage"]
-class /pet/:petId/uploadImage POST
-class /pet/:petId DELETE_GET_POST
-/pet["pet"] --> /pet/findByStatus["findByStatus"]
-class /pet/findByStatus GET
-/pet["pet"] --> /pet/findByTags["findByTags"]
-class /pet/findByTags GET
-class /pet POST_PUT
-/["/"] --> /store["store"]
-/store["store"] --> /store/order>"order"]
-/store/order>"order"] --> /store/order/:orderId(("{orderId}"))
-class /store/order/:orderId DELETE_GET
-class /store/order POST
-/store["store"] --> /store/inventory["inventory"]
-class /store/inventory GET
-class /store OTHER
-/["/"] --> /user>"user"]
-/user>"user"] --> /user/createWithArray>"createWithArray"]
-class /user/createWithArray POST
-/user>"user"] --> /user/createWithList>"createWithList"]
-class /user/createWithList POST
-/user>"user"] --> /user/:username(("{username}"))
-class /user/:username DELETE_GET_PUT
-/user>"user"] --> /user/login["login"]
-class /user/login GET
-/user>"user"] --> /user/logout["logout"]
-class /user/logout GET
-class /user POST
+/["/"] --> /jod["jod"]
+/jod["jod"] --> /jod/categories["categories"]
+class /jod/categories GET
+class /jod GET
+/["/"] --> /joke(("joke"))
+/joke(("joke")) --> /joke/random["random"]
+class /joke/random GET
+/joke(("joke")) --> /joke/search["search"]
+class /joke/search GET
+/joke(("joke")) --> /joke/categories["categories"]
+/joke/categories["categories"] --> /joke/categories/search["search"]
+class /joke/categories/search GET
+class /joke/categories OTHER
+/joke(("joke")) --> /joke/list["list"]
+class /joke/list GET
+/joke(("joke")) --> /joke/tags["tags"]
+/joke/tags["tags"] --> /joke/tags/add>"add"]
+class /joke/tags/add POST
+/joke/tags["tags"] --> /joke/tags/remove>"remove"]
+class /joke/tags/remove POST
+class /joke/tags OTHER
+class /joke DELETE_GET_PATCH_PUT
 class / OTHER
 ```

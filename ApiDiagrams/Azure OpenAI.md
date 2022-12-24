@@ -1,6 +1,6 @@
-# Swagger Petstore
+# Azure OpenAI API version 2022-12-01
 
-OpenAPI: https://petstore.swagger.io/v2/swagger.json
+OpenAPI: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/cognitiveservices/data-plane/AzureOpenAI/authoring/stable/2022-12-01/azureopenai.json
 <div>
 <span style="padding:2px;background-color:lightSteelBlue;border: 2px solid">GET</span>
 <span style="padding:2px;background-color:Lightcoral;border: 2px solid">POST</span>
@@ -24,35 +24,29 @@ classDef DELETE_GET_PUT fill:olive,stroke:#333,stroke-width:2px
 classDef DELETE_GET fill:DarkSeaGreen,stroke:#333,stroke-width:2px
 classDef DELETE fill:Tomato,stroke:#333,stroke-width:2px
 classDef OTHER fill:White,stroke:#333,stroke-width:2px
-/["/"] --> /pet["pet"]
-/pet["pet"] --> /pet/:petId["{petId}"]
-/pet/:petId["{petId}"] --> /pet/:petId/uploadImage>"uploadImage"]
-class /pet/:petId/uploadImage POST
-class /pet/:petId DELETE_GET_POST
-/pet["pet"] --> /pet/findByStatus["findByStatus"]
-class /pet/findByStatus GET
-/pet["pet"] --> /pet/findByTags["findByTags"]
-class /pet/findByTags GET
-class /pet POST_PUT
-/["/"] --> /store["store"]
-/store["store"] --> /store/order>"order"]
-/store/order>"order"] --> /store/order/:orderId(("{orderId}"))
-class /store/order/:orderId DELETE_GET
-class /store/order POST
-/store["store"] --> /store/inventory["inventory"]
-class /store/inventory GET
-class /store OTHER
-/["/"] --> /user>"user"]
-/user>"user"] --> /user/createWithArray>"createWithArray"]
-class /user/createWithArray POST
-/user>"user"] --> /user/createWithList>"createWithList"]
-class /user/createWithList POST
-/user>"user"] --> /user/:username(("{username}"))
-class /user/:username DELETE_GET_PUT
-/user>"user"] --> /user/login["login"]
-class /user/login GET
-/user>"user"] --> /user/logout["logout"]
-class /user/logout GET
-class /user POST
+/["/"] --> /deployments("deployments")
+/deployments("deployments") --> /deployments/:deployment_id(("{deployment-id}"))
+class /deployments/:deployment_id DELETE_GET_PATCH
+class /deployments GET_POST
+/["/"] --> /files("files")
+/files("files") --> /files/:file_id(("{file-id}"))
+/files/:file_id(("{file-id}")) --> /files/:file_id/content["content"]
+class /files/:file_id/content GET
+class /files/:file_id DELETE_GET
+/files("files") --> /files/import>"import"]
+class /files/import POST
+class /files GET_POST
+/["/"] --> /fine_tunes("fine-tunes")
+/fine_tunes("fine-tunes") --> /fine_tunes/:fine_tune_id(("{fine-tune-id}"))
+/fine_tunes/:fine_tune_id(("{fine-tune-id}")) --> /fine_tunes/:fine_tune_id/events["events"]
+class /fine_tunes/:fine_tune_id/events GET
+/fine_tunes/:fine_tune_id(("{fine-tune-id}")) --> /fine_tunes/:fine_tune_id/cancel>"cancel"]
+class /fine_tunes/:fine_tune_id/cancel POST
+class /fine_tunes/:fine_tune_id DELETE_GET
+class /fine_tunes GET_POST
+/["/"] --> /models["models"]
+/models["models"] --> /models/:model_id["{model-id}"]
+class /models/:model_id GET
+class /models GET
 class / OTHER
 ```
